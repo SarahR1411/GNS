@@ -226,7 +226,8 @@
                 }
             }
         },
-            {"AS_Y":{
+        {
+            "AS_Y":{
                 "routers":{
                     "R8": {
                         "interfaces": {
