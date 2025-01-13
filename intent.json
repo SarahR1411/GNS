@@ -1,735 +1,509 @@
 {
     "network": [
         {
-            "AS_X":{
-                "routers":{
-                    "R1":{
-                        "interfaces":{
-                            "protocols":{
-                                "ripng":{
-                                    "loopback": "2001:100:4::1/128",
-                                    "GigabitEthernet1/0": "2001:100:4:8::1/64",
-                                    "GigabitEthernet2/0": "2001:100:4:1::1/64"
-                                },
-                                "bgp":{
-                                    "ibgp":{
-                                        "GigabitEthernet1/0": {
-                                            "ip": "2001:100:4:8::1/64",
-                                            "neighbor": "2001:100:4:8::2",
-                                            "remote-as": "AS_X"
-                                        },
-                                        "GigabitEthernet2/0": {
-                                            "ip": "2001:100:4:1::1/64",
-                                            "neighbor": "2001:100:4:1::2",
-                                            "remote-as": "AS_X"
-                                        }
+            "AS_X": {
+                "routers": {
+                    "R1": {
+                        "interfaces": {
+                            "loopback": "2001:100:4::1/128",
+                            "GigabitEthernet1/0": "2001:100:4:8::1/64",
+                            "GigabitEthernet2/0": "2001:100:4:1::1/64"
+                        },
+                        "protocols": {
+                            "ripng": true,
+                            "bgp": {
+                                "ibgp": [
+                                    {
+                                        "interface": "GigabitEthernet1/0",
+                                        "neighbor": "2001:100:4:8::2",
+                                        "remote-as": "AS_X"
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet2/0",
+                                        "neighbor": "2001:100:4:1::2",
+                                        "remote-as": "AS_X"
                                     }
-                                }
-                            }
-                        }
-                    },      
-                    "R2":{
-                        "interfaces":{
-                            "protocols":{
-                                "ripng":{
-                                    "loopback": "2001:100:4::2/128",
-                                    "GigabitEthernet1/0": "2001:100:4:8::2/64",
-                                    "GigabitEthernet2/0": "2001:100:4:9::2/64",
-                                    "GigabitEthernet3/0": "2001:100:4:10::1/64"
-                                },
-                                "bgp":{
-                                    "ibgp":{
-                                        "GigabitEthernet1/0": {
-                                            "ip": "2001:100:4:8::2/64",
-                                            "neighbor": "2001:100:4:8::1",
-                                            "remote-as": "AS_X"
-                                        },
-                                        "GigabitEthernet2/0":{
-                                            "ip": "2001:100:4:9::2/64",
-                                            "neighbor": "2001:100:4:9::1",
-                                            "remote-as": "AS_X"
-                                        },
-                                        "GigabitEthernet3/0": {
-                                            "ip": "2001:100:4:10::1/64",
-                                            "neighbor": "2001:100:4:10::2",
-                                            "remote-as": "AS_X"
-                                        }
-                                    }
-                                }
+                                ]
                             }
                         }
                     },
-                    "R3":{
-                        "interfaces":{
-                            "protocols":{
-                                "ripng":{
-                                    "loopback": "2001:100:4::3/128",
-                                    "GigabitEthernet1/0": "2001:100:4:1::2/64",
-                                    "GigabitEthernet2/0": "2001:100:4:9::1/64",
-                                    "GigabitEthernet3/0": "2001:100:4:2::1/64"
-                                },
-                                "bgp":{
-                                    "ibgp":{
-                                        "GigabitEthernet1/0": {
-                                            "ip": "2001:100:4:1::2/64",
-                                            "neighbor": "2001:100:4:1::1",
-                                            "remote-as": "AS_X"
-                                        },
-                                        "GigabitEthernet2/0": {
-                                            "ip": "2001:100:4:9::1/64",
-                                            "neighbor": "2001:100:4:9::2",
-                                            "remote-as": "AS_X"
-                                        },
-                                        "GigabitEthernet3/0": {
-                                            "ip": "2001:100:4:2::1/64",
-                                            "neighbor": "2001:100:4:2::2",
-                                            "remote-as": "AS_X"
-                                        }
-                                        
+                    "R2": {
+                        "interfaces": {
+                            "loopback": "2001:100:4::2/128",
+                            "GigabitEthernet1/0": "2001:100:4:8::2/64",
+                            "GigabitEthernet2/0": "2001:100:4:9::2/64",
+                            "GigabitEthernet3/0": "2001:100:4:10::1/64"
+                        },
+                        "protocols": {
+                            "ripng": true,
+                            "bgp": {
+                                "ibgp": [
+                                    {
+                                        "interface": "GigabitEthernet1/0",
+                                        "neighbor": "2001:100:4:8::1",
+                                        "remote-as": "AS_X"
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet2/0",
+                                        "neighbor": "2001:100:4:9::1",
+                                        "remote-as": "AS_X"
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet3/0",
+                                        "neighbor": "2001:100:4:10::2",
+                                        "remote-as": "AS_X"
                                     }
-                                }
+                                ]
                             }
                         }
                     },
-                    "R4":{
-                        "interfaces":{
-                            "protocols":{
-                                "ripng":{
-                                    "loopback": "2001:100:4::4/128",
-                                    "GigabitEthernet1/0": "2001:100:4:10::2/64",
-                                    "GigabitEthernet2/0": "2001:100:4:7::2/64",
-                                    "GigabitEthernet3/0": "2001:100:4:12::1/64",
-                                    "GigabitEthernet4/0": "2001:100:4:11::1/64"
-                                },
-                                "bgp":{
-                                    "ibgp":{
-                                        "GigabitEthernet1/0": {
-                                            "ip": "2001:100:4:10::2/64",
-                                            "neighbor": "2001:100:4:10::1",
-                                            "remote-as": "AS_X"
-                                        },
-                                        "GigabitEthernet2/0": {
-                                            "ip": "2001:100:4:7::2/64",
-                                            "neighbor": "2001:100:4:7::1",
-                                            "remote-as": "AS_X"
-                                        },
-                                        "GigabitEthernet3/0": {
-                                            "ip": "2001:100:4:12::1/64",
-                                            "neighbor": "2001:100:4:12::2",
-                                            "remote-as": "AS_X"
-                                        },
-                                        "GigabitEthernet4/0": {
-                                            "ip": "2001:100:4:11::1/64",
-                                            "neighbor": "2001:100:4:11::2",
-                                            "remote-as": "AS_X"
-                                        }
-                                        
+                    "R3": {
+                        "interfaces": {
+                            "loopback": "2001:100:4::3/128",
+                            "GigabitEthernet1/0": "2001:100:4:1::2/64",
+                            "GigabitEthernet2/0": "2001:100:4:9::1/64",
+                            "GigabitEthernet3/0": "2001:100:4:2::1/64"
+                        },
+                        "protocols": {
+                            "ripng": true,
+                            "bgp": {
+                                "ibgp": [
+                                    {
+                                        "interface": "GigabitEthernet1/0",
+                                        "neighbor": "2001:100:4:1::1",
+                                        "remote-as": "AS_X"
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet2/0",
+                                        "neighbor": "2001:100:4:9::2",
+                                        "remote-as": "AS_X"
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet3/0",
+                                        "neighbor": "2001:100:4:2::2",
+                                        "remote-as": "AS_X"
                                     }
-                                }
-                            }      
+                                ]
+                            }
                         }
                     },
-                    "R5":{
-                        "interfaces":{
-                            "protocols":{
-                                "ripng":{
-                                    "loopback": "2001:100:4::5/128",
-                                    "GigabitEthernet1/0": "2001:100:4:2::2/64",
-                                    "GigabitEthernet2/0": "2001:100:4:7::1/64",
-                                    "GigabitEthernet3/0": "2001:100:4:13::1/64",
-                                    "GigabitEthernet4/0": "2001:100:4:3::1/64"
-                                },
-                                "bgp":{
-                                    "ibgp":{
-                                        "GigabitEthernet1/0": {
-                                            "ip": "2001:100:4:2::2/64",
-                                            "neighbor": "2001:100:4:2::1",
-                                            "remote-as": "AS_X"
-                                        },
-                                        "GigabitEthernet2/0": {
-                                            "ip": "2001:100:4:7::1/64",
-                                            "neighbor": "2001:100:4:7::2",
-                                            "remote-as": "AS_X"
-                                        },
-                                        "GigabitEthernet3/0": {
-                                            "ip": "2001:100:4:13::1/64",
-                                            "neighbor": "2001:100:4:13::2",
-                                            "remote-as": "AS_X"
-                                        },
-                                        "GigabitEthernet4/0": {
-                                            "ip": "2001:100:4:3::1/64",
-                                            "neighbor": "2001:100:4:3::2",
-                                            "remote-as": "AS_X"
-                                        }
+                    "R4": {
+                        "interfaces": {
+                            "loopback": "2001:100:4::4/128",
+                            "GigabitEthernet1/0": "2001:100:4:10::2/64",
+                            "GigabitEthernet2/0": "2001:100:4:7::2/64",
+                            "GigabitEthernet3/0": "2001:100:4:12::1/64",
+                            "GigabitEthernet4/0": "2001:100:4:11::1/64"
+                        },
+                        "protocols": {
+                            "ripng": true,
+                            "bgp": {
+                                "ibgp": [
+                                    {
+                                        "interface": "GigabitEthernet1/0",
+                                        "neighbor": "2001:100:4:10::1",
+                                        "remote-as": "AS_X"
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet2/0",
+                                        "neighbor": "2001:100:4:7::1",
+                                        "remote-as": "AS_X"
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet3/0",
+                                        "neighbor": "2001:100:4:12::2",
+                                        "remote-as": "AS_X"
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet4/0",
+                                        "neighbor": "2001:100:4:11::2",
+                                        "remote-as": "AS_X"
                                     }
-                                }
-                            }         
+                                ]
+                            }
                         }
                     },
-                    "R6":{
-                        "interfaces":{
-                            "protocols":{
-                                "ripng":{
-                                    "loopback": "2001:100:4::6/128", 
-                                    "GigabitEthernet1/0": "2001:100:4:11::2/64", 
-                                    "GigabitEthernet3/0": "2001:100:4:13::2/64"
-                                },
-                                "bgp":{
-                                    "ebgp":{
-                                        "GigabitEthernet2/0": "2001:100:4:14::1/64",
+                    "R5": {
+                        "interfaces": {
+                            "loopback": "2001:100:4::5/128",
+                            "GigabitEthernet1/0": "2001:100:4:2::2/64",
+                            "GigabitEthernet2/0": "2001:100:4:7::1/64",
+                            "GigabitEthernet3/0": "2001:100:4:13::1/64",
+                            "GigabitEthernet4/0": "2001:100:4:3::1/64"
+                        },
+                        "protocols": {
+                            "ripng": true,
+                            "bgp": {
+                                "ibgp": [
+                                    {
+                                        "interface": "GigabitEthernet1/0",
+                                        "neighbor": "2001:100:4:2::1",
+                                        "remote-as": "AS_X"
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet2/0",
+                                        "neighbor": "2001:100:4:7::2",
+                                        "remote-as": "AS_X"
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet3/0",
+                                        "neighbor": "2001:100:4:13::2",
+                                        "remote-as": "AS_X"
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet4/0",
+                                        "neighbor": "2001:100:4:3::2",
+                                        "remote-as": "AS_X"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "R6": {
+                        "interfaces": {
+                            "loopback": "2001:100:4::6/128",
+                            "GigabitEthernet1/0": "2001:100:4:11::2/64",
+                            "GigabitEthernet3/0": "2001:100:4:13::2/64",
+                            "GigabitEthernet2/0": "2001:100:4:14::1/64"
+                        },
+                        "protocols": {
+                            "ripng": true,
+                            "bgp": {
+                                "ibgp": [
+                                    {
+                                        "interface": "GigabitEthernet1/0",
+                                        "neighbor": "2001:100:4:11::1",
+                                        "remote-as": "AS_X"
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet3/0",
+                                        "neighbor": "2001:100:4:13::1",
+                                        "remote-as": "AS_X"
+                                    }
+                                ],
+                                "ebgp": [
+                                    {
+                                        "interface": "GigabitEthernet2/0",
                                         "neighbor": "2001:100:4:14::2",
                                         "remote-as": "AS_Y"
-
-                                    },
-                                    "ibgp":{
-                                        "GigabitEthernet1/0": {
-                                            "ip": "2001:100:4:11::2/64",
-                                            "neighbor": "2001:100:4:11::1",
-                                            "remote-as": "AS_X"
-                                        },
-                                        "GigabitEthernet3/0": {
-                                            "ip": "2001:100:4:13::2/64",
-                                            "neighbor": "2001:100:4:13::1",
-                                            "remote-as": "AS_X"
-                                        }
                                     }
-                                }
+                                ]
                             }
                         }
                     },
-                    "R7":{
-                        "interfaces":{
-                            "protocols":{
-                                "ripng":{
-                                    "loopback": "2001:100:4::7/128", 
-                                    "GigabitEthernet1/0": "2001:100:4:3::2/64", 
-                                    "GigabitEthernet3/0": "2001:100:4:12::2/64"
-                                },
-                                "bgp":{
-                                    "ebgp":{
-                                        "GigabitEthernet2/0": "2001:100:4:4::1/64",
+                    "R7": {
+                        "interfaces": {
+                            "loopback": "2001:100:4::7/128",
+                            "GigabitEthernet1/0": "2001:100:4:3::2/64",
+                            "GigabitEthernet3/0": "2001:100:4:12::2/64",
+                            "GigabitEthernet2/0": "2001:100:4:4::1/64"
+                        },
+                        "protocols": {
+                            "ripng": true,
+                            "bgp": {
+                                "ibgp": [
+                                    {
+                                        "interface": "GigabitEthernet1/0",
+                                        "neighbor": "2001:100:4:3::1",
+                                        "remote-as": "AS_X"
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet3/0",
+                                        "neighbor": "2001:100:4:12::1",
+                                        "remote-as": "AS_X"
+                                    }
+                                ],
+                                "ebgp": [
+                                    {
+                                        "interface": "GigabitEthernet2/0",
                                         "neighbor": "2001:100:4:4::2",
                                         "remote-as": "AS_Y"
-                                    },
-                                    "ibgp":{
-                                        "GigabitEthernet1/0": {
-                                            "ip": "2001:100:4:3::2/64",
-                                            "neighbor": "2001:100:4:3::1",
-                                            "remote-as": "AS_X"
-                                        },
-                                        "GigabitEthernet3/0": {
-                                            "ip": "2001:100:4:12::2/64",
-                                            "neighbor": "2001:100:4:12::1",
-                                            "remote-as": "AS_X"
-                                        }
                                     }
-                                }
+                                ]
                             }
                         }
                     }
                 }
-            },
-            "AS_Y":{
+            }
+        },
+            {"AS_Y":{
                 "routers":{
-                    "R8":{
-                        "interfaces":{
+                    "R8": {
+                        "interfaces": {
                             "loopback": "2001:100:4::8/128",
-                            "GigabitEthernet2/0": {
-                                "ip": "2001:100:4:14::2/64",
-                                "protocols":{
-                                    "ebgp":{
-                                        "neighbor": "2001:100:4:14::1",
-                                        "remote-as": "AS_X"
-                                    }
-                                }
-                            },
-                            "GigabitEthernet1/0":{
-                                "ip": "2001:100:4:15::1/64",
-                                "protocols":{
-                                    "ibgp":{
-                                        "neighbor": "2001:100:4:15::2",
-                                        "remote-as": "AS_Y"
-                                    }
-                                }
-                            },
-                            "GigabitEthernet3/0":{
-                                "ip": "2001:100:4:17::1/64",
-                                "protocols":{
-                                    "ibgp":{
-                                        "neighbor": "2001:100:4:17::2",
-                                        "remote-as": "AS_Y"
-                                    }
-                            }
+                            "GigabitEthernet1/0": "2001:100:4:15::1/64",
+                            "GigabitEthernet2/0": "2001:100:4:14::2/64",
+                            "GigabitEthernet3/0": "2001:100:4:17::1/64"
                         },
-                        "protocols":{
-                            "ospf":{
+                        "protocols": {
+                            "ospf": {
                                 "process-id": 8,
-                                "router-id":"8.8.8.8",
-                                "networks":{
-                                    "2001:100:4:8::/128": {"area": 0},
+                                "router-id": "8.8.8.8",
+                                "networks": {
+                                    "2001:100:4::8/128": {"area": 0},
                                     "2001:100:4:14::/64": {"area": 0},
                                     "2001:100:4:15::/64": {"area": 0},
                                     "2001:100:4:17::/64": {"area": 0}
                                 }
-                            }         
+                            },
+                            "ibgp": [
+                                {
+                                    "interface": "GigabitEthernet1/0",
+                                    "neighbor": "2001:100:4:15::2",
+                                    "remote-as": "AS_Y"
+                                },
+                                {
+                                    "interface": "GigabitEthernet3/0",
+                                    "neighbor": "2001:100:4:17::2",
+                                    "remote-as": "AS_Y"
+                                }
+                            ],
+                            "ebgp": [
+                                {
+                                    "interface": "GigabitEthernet2/0",
+                                    "neighbor": "2001:100:4:14::1",
+                                    "remote-as": "AS_X"
+                                }
+                            ]
                         }
                     },
-                    "R9":{
-                        "interfaces":{
+                    "R9": {
+                        "interfaces": {
                             "loopback": "2001:100:4::9/128",
-                            "GigabitEthernet2/0": {
-                                "ip": "2001:100:4:4::2/64",
-                                "protocols":{
-                                    "ebgp":{
-                                        "neighbor": "2001:100:4:4::1",
-                                        "remote-as": "AS_X"
-                                    }
-                                }
-                            },
-                            "GigabitEthernet1/0":{
-                                "ip": "2001:100:4:5::1/64",
-                                "protocols":{
-                                    "ibgp":{
-                                        "neighbor": "2001:100:4:5::2",
-                                        "remote-as": "AS_Y"
-                                    }
-                                }
-                            },
-                            "GigabitEthernet3/0":{
-                                "ip": "2001:100:4:16::1/64",
-                                "protocols":{
-                                    "ibgp":{
-                                        "neighbor": "2001:100:4:16::2",
-                                        "remote-as": "AS_Y"
-                                    }
-                                }
-                            }
+                            "GigabitEthernet1/0": "2001:100:4:5::1/64",
+                            "GigabitEthernet2/0": "2001:100:4:4::2/64",
+                            "GigabitEthernet3/0": "2001:100:4:16::1/64"
                         },
-                        "protocols":{
-                            "ospf":{
+                        "protocols": {
+                            "ospf": {
                                 "process-id": 9,
-                                "router-id":"9.9.9.9",
-                                "networks":{
-                                    "2001:100:4:9::/128": {"area": 0},
+                                "router-id": "9.9.9.9",
+                                "networks": {
+                                    "2001:100:4::9/128": {"area": 0},
                                     "2001:100:4:4::/64": {"area": 0},
                                     "2001:100:4:5::/64": {"area": 0},
                                     "2001:100:4:16::/64": {"area": 0}
                                 }
-                            }         
+                            },
+                            "ibgp": [
+                                {
+                                    "interface": "GigabitEthernet1/0",
+                                    "neighbor": "2001:100:4:5::2",
+                                    "remote-as": "AS_Y"
+                                },
+                                {
+                                    "interface": "GigabitEthernet3/0",
+                                    "neighbor": "2001:100:4:16::2",
+                                    "remote-as": "AS_Y"
+                                }
+                            ],
+                            "ebgp": [
+                                {
+                                    "interface": "GigabitEthernet2/0",
+                                    "neighbor": "2001:100:4:4::1",
+                                    "remote-as": "AS_X"
+                                }
+                            ]
                         }
                     },
-                    "R10":{
+                    "R10": {
                         "interfaces": {
                             "loopback": "2001:100:4::10/128",
-                            "GigabitEthernet1/0": {
-                              "ip": "2001:100:4:19::1/64",
-                              "ospf": {
-                                "area": "0.0.0.0",
-                                "hello-interval": 10,
-                                "dead-interval": 40
-                              }
-                            },
-                            "GigabitEthernet2/0": {
-                              "ip": "2001:100:4:18::1/64",
-                              "ospf": {
-                                "area": "0.0.0.0",
-                                "hello-interval": 10,
-                                "dead-interval": 40
-                              }
-                            },
-                            "GigabitEthernet3/0": {
-                              "ip": "2001:100:4:16::2/64",
-                              "ospf": {
-                                "area": "0.0.0.0",
-                                "hello-interval": 10,
-                                "dead-interval": 40
-                              }
-                            },
-                            "GigabitEthernet4/0": {
-                              "ip": "2001:100:4:15::2/64",
-                              "ospf": {
-                                "area": "0.0.0.0",
-                                "hello-interval": 10,
-                                "dead-interval": 40
-                              }
-                            }
-                          },
-                          "protocols": {
+                            "GigabitEthernet1/0": "2001:100:4:19::1/64",
+                            "GigabitEthernet2/0": "2001:100:4:18::1/64",
+                            "GigabitEthernet3/0": "2001:100:4:16::2/64",
+                            "GigabitEthernet4/0": "2001:100:4:15::2/64"
+                        },
+                        "protocols": {
                             "ospf": {
-                              "process-id": 10,
-                              "router-id": "10.10.10.10",
-                              "networks": [
-                                {
-                                  "subnet": "2001:100:4:19::/64",
-                                  "area": "0.0.0.0"
-                                },
-                                {
-                                  "subnet": "2001:100:4:18::/64",
-                                  "area": "0.0.0.0"
-                                },
-                                {
-                                  "subnet": "2001:100:4:16::/64",
-                                  "area": "0.0.0.0"
-                                },
-                                {
-                                  "subnet": "2001:100:4:15::/64",
-                                  "area": "0.0.0.0"
-                                },
-                                {
-                                  "subnet": "2001:100:4::8/128",
-                                  "area": "0.0.0.0"
+                                "process-id": 10,
+                                "router-id": "10.10.10.10",
+                                "networks": {
+                                    "2001:100:4:19::/64": {"area": 0},
+                                    "2001:100:4:18::/64": {"area": 0},
+                                    "2001:100:4:16::/64": {"area": 0},
+                                    "2001:100:4:15::/64": {"area": 0},
+                                    "2001:100:4::10/128": {"area": 0}
                                 }
-                              ]
                             },
-                            "ibgp": {
-                              "local-as": "AS_Y",
-                              "router-id": "10.10.10.10",
-                              "neighbors": [
+                            "ibgp": [
                                 {
-                                  "interface": "GigabitEthernet1/0",
-                                  "neighbor-ip": "2001:100:4:19::2",
-                                  "remote-as": "AS_Y",
-                                  "description": "iBGP with Router 12"
+                                    "interface": "GigabitEthernet1/0",
+                                    "neighbor": "2001:100:4:19::2",
+                                    "remote-as": "AS_Y"
                                 },
                                 {
-                                  "interface": "GigabitEthernet2/0",
-                                  "neighbor-ip": "2001:100:4:18::1",
-                                  "remote-as": "AS_Y",
-                                  "description": "iBGP with Router 11"
+                                    "interface": "GigabitEthernet2/0",
+                                    "neighbor": "2001:100:4:18::2",
+                                    "remote-as": "AS_Y"
                                 },
                                 {
-                                  "interface": "GigabitEthernet3/0",
-                                  "neighbor-ip": "2001:100:4:16::2",
-                                  "remote-as": "AS_Y",
-                                  "description": "iBGP with Router 9"
+                                    "interface": "GigabitEthernet3/0",
+                                    "neighbor": "2001:100:4:16::1",
+                                    "remote-as": "AS_Y"
                                 },
                                 {
-                                  "interface": "GigabitEthernet4/0",
-                                  "neighbor-ip": "2001:100:4:15::2",
-                                  "remote-as": "AS_Y",
-                                  "description": "iBGP with Router 8"
+                                    "interface": "GigabitEthernet4/0",
+                                    "neighbor": "2001:100:4:15::1",
+                                    "remote-as": "AS_Y"
                                 }
-                              ]
-                            }
-                        
+                            ]
                         }
                     },
-                    "R11":{
-                        "interfaces":{
+                    "R11": {
+                        "interfaces": {
                             "loopback": "2001:100:4::11/128",
-                            "GigabitEthernet1/0": {
-                                "ip": "2001:100:4:6::1/64",
-                                "ospf": {
-                                    "area": "0.0.0.0",
-                                    "hello-interval": 10,
-                                    "dead-interval": 40
-                                }
-                            },
-                            "GigabitEthernet2/0": {
-                                "ip": "2001:100:4:18::2/64",
-                                "ospf": {
-                                    "area": "0.0.0.0",
-                                    "hello-interval": 10,
-                                    "dead-interval": 40
-                                }
-                            },
-                            "GigabitEthernet3/0": {
-                                "ip": "2001:100:4:17::2/64",
-                                "ospf": {
-                                    "area": "0.0.0.0",
-                                    "hello-interval": 10,
-                                    "dead-interval": 40
-                                }
-                            },
-                            "GigabitEthernet4/0": {
-                                "ip": "2001:100:4:5::2/64",
-                                "ospf": {
-                                    "area": "0.0.0.0",
-                                    "hello-interval": 10,
-                                    "dead-interval": 40
-                                }
-                            }
+                            "GigabitEthernet1/0": "2001:100:4:6::1/64",
+                            "GigabitEthernet2/0": "2001:100:4:18::2/64",
+                            "GigabitEthernet3/0": "2001:100:4:17::2/64",
+                            "GigabitEthernet4/0": "2001:100:4:5::2/64"
                         },
-                        "protocols":{
+                        "protocols": {
                             "ospf": {
                                 "process-id": 11,
                                 "router-id": "11.11.11.11",
-                                "networks": [
-                                    {
-                                        "subnet": "2001:100:4:6::/64",
-                                        "area": "0.0.0.0"
-                                    },
-                                    {
-                                        "subnet": "2001:100:4:18::/64",
-                                        "area": "0.0.0.0"
-                                    },
-                                    {
-                                        "subnet": "2001:100:4:17::/64",
-                                        "area": "0.0.0.0"
-                                    },
-                                    {
-                                        "subnet": "2001:100:4:5::/64",
-                                        "area": "0.0.0.0"
-                                    },
-                                    {
-                                        "subnet": "2001:100:4::11/128",
-                                        "area": "0.0.0.0"
-                                    }
-                                ]
+                                "networks": {
+                                    "2001:100:4:6::/64": {"area": 0},
+                                    "2001:100:4:18::/64": {"area": 0},
+                                    "2001:100:4:17::/64": {"area": 0},
+                                    "2001:100:4:5::/64": {"area": 0},
+                                    "2001:100:4::11/128": {"area": 0}
+                                }
                             },
-                            "ibgp": {
-                                "local-as": "AS_Y",
-                                "router-id": "11.11.11.11",
-                                "neighbors": [
-                                    {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor-ip": "2001:100:4:6::2",
-                                        "remote-as": "AS_Y",
-                                        "description": "iBGP with Router 13"
-                                    },
-                                    {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor-ip": "2001:100:4:18::1",
-                                        "remote-as": "AS_Y",
-                                        "description": "iBGP with Router 10"
-                                    },
-                                    {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor-ip": "2001:100:4:17::1",
-                                        "remote-as": "AS_Y",
-                                        "description": "iBGP with Router 8"
-                                    },
-                                    {
-                                        "interface": "GigabitEthernet4/0",
-                                        "neighbor-ip": "2001:100:4:5::1",
-                                        "remote-as": "AS_Y",
-                                        "description": "iBGP with Router 9"
-                                    }
-                                ]
-                            }
+                            "ibgp": [
+                                {
+                                    "interface": "GigabitEthernet1/0",
+                                    "neighbor": "2001:100:4:6::2",
+                                    "remote-as": "AS_Y"
+                                },
+                                {
+                                    "interface": "GigabitEthernet2/0",
+                                    "neighbor": "2001:100:4:18::1",
+                                    "remote-as": "AS_Y"
+                                },
+                                {
+                                    "interface": "GigabitEthernet3/0",
+                                    "neighbor": "2001:100:4:17::1",
+                                    "remote-as": "AS_Y"
+                                },
+                                {
+                                    "interface": "GigabitEthernet4/0",
+                                    "neighbor": "2001:100:4:5::1",
+                                    "remote-as": "AS_Y"
+                                }
+                            ]
                         }
-                        
                     },
-                    "R12":{
-                        "interfaces":{
+                    "R12": {
+                        "interfaces": {
                             "loopback": "2001:100:4::12/128",
-                            "GigabitEthernet1/0": {
-                                "ip": "2001:100:4:21::1/64",
-                                "ospf": {
-                                    "area": "0.0.0.0",
-                                    "hello-interval": 10,
-                                    "dead-interval": 40
-                                }
-                            },
-                            "GigabitEthernet2/0": {
-                                "ip": "2001:100:4:20::2/64",
-                                "ospf": {
-                                    "area": "0.0.0.0",
-                                    "hello-interval": 10,
-                                    "dead-interval": 40
-                                }
-                            },
-                            "GigabitEthernet3/0": {
-                                "ip": "2001:100:4:19::2/64",
-                                "ospf": {
-                                    "area": "0.0.0.0",
-                                    "hello-interval": 10,
-                                    "dead-interval": 40
-                                }
-                            }
+                            "GigabitEthernet1/0": "2001:100:4:21::1/64",
+                            "GigabitEthernet2/0": "2001:100:4:20::2/64",
+                            "GigabitEthernet3/0": "2001:100:4:19::2/64"
                         },
-                        "protocols":{
+                        "protocols": {
                             "ospf": {
                                 "process-id": 12,
                                 "router-id": "12.12.12.12",
-                                "networks": [
-                                    {
-                                        "subnet": "2001:100:4:21::/64",
-                                        "area": "0.0.0.0"
-                                    },
-                                    {
-                                        "subnet": "2001:100:4:20::/64",
-                                        "area": "0.0.0.0"
-                                    },
-                                    {
-                                        "subnet": "2001:100:4:19::/64",
-                                        "area": "0.0.0.0"
-                                    },
-                                    {
-                                        "subnet": "2001:100:4::12/128",
-                                        "area": "0.0.0.0"
-                                    }
-                                ]
+                                "networks": {
+                                    "2001:100:4:21::/64": {"area": 0},
+                                    "2001:100:4:20::/64": {"area": 0},
+                                    "2001:100:4:19::/64": {"area": 0},
+                                    "2001:100:4::12/128": {"area": 0}
+                                }
                             },
-                            "ibgp": {
-                                "local-as": "AS_Y",
-                                "router-id": "12.12.12.12",
-                                "neighbors": [
-                                    {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor-ip": "2001:100:4:21::2",
-                                        "remote-as": "AS_Y",
-                                        "description": "iBGP with Router 14"
-                                    },
-                                    {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor-ip": "2001:100:4:20::1",
-                                        "remote-as": "AS_Y",
-                                        "description": "iBGP with Router 13"
-                                    },
-                                    {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor-ip": "2001:100:4:19::1",
-                                        "remote-as": "AS_Y",
-                                        "description": "iBGP with Router 10"
-                                    }
-                                ]
-                            }
+                            "ibgp": [
+                                {
+                                    "interface": "GigabitEthernet1/0",
+                                    "neighbor": "2001:100:4:21::2",
+                                    "remote-as": "AS_Y"
+                                },
+                                {
+                                    "interface": "GigabitEthernet2/0",
+                                    "neighbor": "2001:100:4:20::1",
+                                    "remote-as": "AS_Y"
+                                },
+                                {
+                                    "interface": "GigabitEthernet3/0",
+                                    "neighbor": "2001:100:4:19::1",
+                                    "remote-as": "AS_Y"
+                                }
+                            ]
                         }
                     },
-                    "R13":{
-                        "interfaces":{
+                    "R13": {
+                        "interfaces": {
                             "loopback": "2001:100:4::13/128",
-                            "GigabitEthernet1/0": {
-                                "ip": "2001:100:4:7::1/64",
-                                "ospf": {
-                                    "area": "0.0.0.0",
-                                    "hello-interval": 10,
-                                    "dead-interval": 40
-                                }
-                            },
-                            "GigabitEthernet2/0": {
-                                "ip": "2001:100:4:20::1/64",
-                                "ospf": {
-                                    "area": "0.0.0.0",
-                                    "hello-interval": 10,
-                                    "dead-interval": 40
-                                }
-                            },
-                            "GigabitEthernet3/0": {
-                                "ip": "2001:100:4:6::2/64",
-                                "ospf": {
-                                    "area": "0.0.0.0",
-                                    "hello-interval": 10,
-                                    "dead-interval": 40
-                                }
-                            }
+                            "GigabitEthernet1/0": "2001:100:4:7::1/64",
+                            "GigabitEthernet2/0": "2001:100:4:20::1/64",
+                            "GigabitEthernet3/0": "2001:100:4:6::2/64"
                         },
-                        "protocols":{
+                        "protocols": {
                             "ospf": {
                                 "process-id": 13,
                                 "router-id": "13.13.13.13",
-                                "networks": [
-                                    {
-                                        "subnet": "2001:100:4:7::/64",
-                                        "area": "0.0.0.0"
-                                    },
-                                    {
-                                        "subnet": "2001:100:4:20::/64",
-                                        "area": "0.0.0.0"
-                                    },
-                                    {
-                                        "subnet": "2001:100:4:6::/64",
-                                        "area": "0.0.0.0"
-                                    },
-                                    {
-                                        "subnet": "2001:100:4::13/128",
-                                        "area": "0.0.0.0"
-                                    }
-                                ]
+                                "networks": {
+                                    "2001:100:4:7::/64": {"area": 0},
+                                    "2001:100:4:20::/64": {"area": 0},
+                                    "2001:100:4:6::/64": {"area": 0},
+                                    "2001:100:4::13/128": {"area": 0}
+                                }
                             },
-                            "ibgp": {
-                                "local-as": "AS_Y",
-                                "router-id": "13.13.13.13",
-                                "neighbors": [
-                                    {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor-ip": "2001:100:4:7::2",
-                                        "remote-as": "AS_Y",
-                                        "description": "iBGP with Router 14"
-                                    },
-                                    {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor-ip": "2001:100:4:20::2",
-                                        "remote-as": "AS_Y",
-                                        "description": "iBGP with Router 12"
-                                    },
-                                    {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor-ip": "2001:100:4:6::1",
-                                        "remote-as": "AS_Y",
-                                        "description": "iBGP with Router 11"
-                                    }
-                                ]
-                            }
+                            "ibgp": [
+                                {
+                                    "interface": "GigabitEthernet1/0",
+                                    "neighbor": "2001:100:4:7::2",
+                                    "remote-as": "AS_Y"
+                                },
+                                {
+                                    "interface": "GigabitEthernet2/0",
+                                    "neighbor": "2001:100:4:20::2",
+                                    "remote-as": "AS_Y"
+                                },
+                                {
+                                    "interface": "GigabitEthernet3/0",
+                                    "neighbor": "2001:100:4:6::1",
+                                    "remote-as": "AS_Y"
+                                }
+                            ]
                         }
                     },
-                    "R14":{
-                        "interfaces":{
+                    "R14": {
+                        "interfaces": {
                             "loopback": "2001:100:4::14/128",
-                            "GigabitEthernet1/0": {
-                                "ip": "2001:100:4:7::2/64",
-                                "ospf": {
-                                    "area": "0.0.0.0",
-                                    "hello-interval": 10,
-                                    "dead-interval": 40
-                                }
-                            },
-                            "GigabitEthernet2/0": {
-                                "ip": "2001:100:4:21::2/64",
-                                "ospf": {
-                                    "area": "0.0.0.0",
-                                    "hello-interval": 10,
-                                    "dead-interval": 40
-                                }
-                            }
+                            "GigabitEthernet1/0": "2001:100:4:7::2/64",
+                            "GigabitEthernet2/0": "2001:100:4:21::2/64"
                         },
-                        "protocols":{
+                        "protocols": {
                             "ospf": {
                                 "process-id": 14,
                                 "router-id": "14.14.14.14",
-                                "networks": [
-                                    {
-                                        "subnet": "2001:100:4:7::/64",
-                                        "area": "0.0.0.0"
-                                    },
-                                    {
-                                        "subnet": "2001:100:4:21::/64",
-                                        "area": "0.0.0.0"
-                                    },
-                                    {
-                                        "subnet": "2001:100:4::14/128",
-                                        "area": "0.0.0.0"
-                                    }
-                                ]
+                                "networks": {
+                                    "2001:100:4:7::/64": {"area": 0},
+                                    "2001:100:4:21::/64": {"area": 0},
+                                    "2001:100:4::14/128": {"area": 0}
+                                }
                             },
-                            "ibgp": {
-                                "local-as": "AS_Y",
-                                "router-id": "14.14.14.14",
-                                "neighbors": [
-                                    {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor-ip": "2001:100:4:7::1",
-                                        "remote-as": "AS_Y",
-                                        "description": "iBGP with Router 13"
-                                    },
-                                    {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor-ip": "2001:100:4:21::1",
-                                        "remote-as": "AS_Y",
-                                        "description": "iBGP with Router 12"
-                                    }
-                                ]
-                            }
+                            "ibgp": [
+                                {
+                                    "interface": "GigabitEthernet1/0",
+                                    "neighbor": "2001:100:4:7::1",
+                                    "remote-as": "AS_Y"
+                                },
+                                {
+                                    "interface": "GigabitEthernet2/0",
+                                    "neighbor": "2001:100:4:21::1",
+                                    "remote-as": "AS_Y"
+                                }
+                            ]
                         }
                     }
                 }
             }
-            }
         }
-        
     ]
 }
+
     
 
                    
