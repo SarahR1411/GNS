@@ -1,3 +1,6 @@
+import os
+import shutil
+
 router_folder_corresp = {
     5 : "0cdfc724-c2af-4ebf-8da6-a9f2adb35c51",
 	14 : "2afa751b-268b-4974-ba16-2bec9036dfef",
@@ -14,3 +17,21 @@ router_folder_corresp = {
 	2 : "e30e197d-464f-4764-b50c-9c46200cf67a",
 	12 : "fce06220-5b24-4eab-89c2-acdf0a798679"
 	}
+
+config_folder  = "config_files"
+destination = "project-files/dynamips"
+
+def move_configs():
+    for router_number, folder_id in router_folder_corresp.items():
+        src_file = os.path.join(config_folder, f"R{router_number}_startup.cfg")
+        dest_folder = os.path.join(destination, folder_id, "configs")
+        dest_file = os.path.join(dest_folder, f"R{router_number}_startup.cfg")
+
+        if os.path.exists(src_file):
+            shutil.move(src_file, dest_file)
+            print(f"Moved {src_file} to {dest_file}")
+        else:
+            print(f"Source file not found: {src_file}")
+
+if __name__ == "__main__":
+    move_configs()
