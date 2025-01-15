@@ -19,57 +19,64 @@ def get_as_number(as_name):
 def create_config(router_name, router_data, as_name):
     config = []
     as_number = get_as_number(as_name)
-    config.append(f"hostname {router_name}")
+    config.append(f"!\nhostname {router_name}")
+    config.append("!")
+    config.append("no ip domain lookup")
     config.append("ipv6 unicast-routing")
     config.append("ipv6 cef")
+    config.append("!")
 
 
     for interface, ipv6_address in router_data["interfaces"].items():
         config.append(f"interface {interface}")
+        config.append(" no ip address")
+        config.append(" negotiation auto")
         config.append(f" ipv6 address {ipv6_address}")
         config.append(" ipv6 enable")
+        if router_data["protocols"].get("ripng"):
+            config.append(f" ipv6 rip {router_data['protocols']['process-id']} enable")
+        if "ospf" in router_data["protocols"]:
+            config.append(f" ipv6 ospf {router_data['protocols']['process-id']} area {0} ")
         config.append("!")
     
     # If RIP enabled
     
     if router_data["protocols"].get("ripng"):
-        config.append(f"ipv6 router rip {router_name}")
+        config.append(f"ipv6 router rip {router_data['protocols']['process-id']}")
         config.append(" redistribute connected")
-    
-    # If OSPF enabled
-
-    if "ospf" in router_data["protocols"]:
-        ospf_config = router_data["protocols"]["ospf"]
-        config.append(f"ipv6 router ospf {ospf_config['process-id']}")
-        config.append(f" router-id {ospf_config['router-id']}")
-        for net, settings, in ospf_config.get("networks", {}).items():
-            config.append(f" network {net} area {settings['area']}")
         config.append("!")
-
-        for interface in router_data["interfaces"].keys():
-            config.append(f"interface {interface}")
-            config.append(f" ipv6 ospf {ospf_config['process-id']} area {0}") 
-            config.append("!")
     
     # For BGP config
     
-    if as_name == "AS_X": #There's a slight difference in structure between AS_X and AS_Y in the intent file
-        bgp_config = router_data['protocols'].get("bgp", {})
-        if "ibgp" in bgp_config:
-            config.append(f"router bgp {as_number}")
-            for ibgp in bgp_config["ibgp"]:
-                config.append(f" neighbor {ibgp['neighbor']} remote-as {get_as_number(ibgp['remote-as'])}")
-        
+    
+    bgp_config = router_data['protocols'].get("bgp", {})
+
+    if "ibgp" in bgp_config:
+        config.append(f"router bgp {as_number}")
+        config.append(f" bgp router-id {router_data['router-id']}")
+        config.append(" bgp log-neighbor-changes")
+        config.append(" no bgp default ipv4-unicast")
+        for ibgp in bgp_config["ibgp"]:
+            config.append(f" neighbor {ibgp['neighbor']} remote-as {get_as_number(ibgp['remote-as'])}")
         if "ebgp" in bgp_config:
-            config.append(f"router bgp {as_number}")
             for ebgp in bgp_config["ebgp"]:
                 config.append(f" neighbor {ebgp['neighbor']} remote-as {get_as_number(ebgp['remote-as'])}")
-    else:
-        for protocol in ["ibgp", "ebgp"]:
-            if protocol in router_data["protocols"]:
-                config.append(f"router bgp {as_number}")
-                for neighbor in router_data["protocols"][protocol]:
-                    config.append(f" neighbor {neighbor['neighbor']} remote-as {get_as_number(neighbor['remote-as'])}")
+        config.append("!")
+
+
+        config.append("address-family ipv6")
+        if "ebgp" in bgp_config:
+            config.append(f" network ") #to change not sure about placement
+            for ebgp in bgp_config["ebgp"]:
+                config.append(f" neighbor {ebgp['neighbor']} activate")
+        for ibgp in bgp_config['ibgp']:
+            config.append(f" neighbor {ibgp['neighbor']} activate")
+        config.append("exit-address-family")
+        config.append("!")
+    
+    if "ebgp" in bgp_config:
+        config.append(f"ipv6 router ospf {router_data['protocols']['process-id']}")
+        config.append(f" router-id {router_data['router-id']}")
     
     config.append("!\nend")
     return "\n".join(config)
