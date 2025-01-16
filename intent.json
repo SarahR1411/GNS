@@ -16,14 +16,34 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:8::2",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::2",
+                                        "remote-as": 1
                                     },
                                     {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:1::2",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::3",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::4",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::5",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::6",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::7",
+                                        "remote-as": 1
                                     }
                                 ]
                             }
@@ -43,19 +63,34 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:8::1",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::1",
+                                        "remote-as": 1
                                     },
                                     {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:9::1",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::3",
+                                        "remote-as": 1
                                     },
                                     {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor": "2001:100:4:10::2",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::4",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::5",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::6",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::7",
+                                        "remote-as": 1
                                     }
                                 ]
                             }
@@ -75,19 +110,34 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:1::1",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::1",
+                                        "remote-as": 1
                                     },
                                     {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:9::2",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::2",
+                                        "remote-as": 1
                                     },
                                     {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor": "2001:100:4:2::2",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::4",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::5",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::6",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::7",
+                                        "remote-as": 1
                                     }
                                 ]
                             }
@@ -108,24 +158,34 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:10::1",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::1",
+                                        "remote-as": 1
                                     },
                                     {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:7::1",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::2",
+                                        "remote-as": 1
                                     },
                                     {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor": "2001:100:4:12::2",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::3",
+                                        "remote-as": 1
                                     },
                                     {
-                                        "interface": "GigabitEthernet4/0",
-                                        "neighbor": "2001:100:4:11::2",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::5",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::6",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::7",
+                                        "remote-as": 1
                                     }
                                 ]
                             }
@@ -146,24 +206,34 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:2::1",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::1",
+                                        "remote-as": 1
                                     },
                                     {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:7::2",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::2",
+                                        "remote-as": 1
                                     },
                                     {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor": "2001:100:4:13::2",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::3",
+                                        "remote-as": 1
                                     },
                                     {
-                                        "interface": "GigabitEthernet4/0",
-                                        "neighbor": "2001:100:4:3::2",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::4",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::6",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::7",
+                                        "remote-as": 1
                                     }
                                 ]
                             }
@@ -183,21 +253,41 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:11::1",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::1",
+                                        "remote-as": 1
                                     },
                                     {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor": "2001:100:4:13::1",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::2",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::3",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::4",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::5",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::7",
+                                        "remote-as": 1
                                     }
                                 ],
                                 "ebgp": [
                                     {
                                         "interface": "GigabitEthernet2/0",
                                         "neighbor": "2001:100:4:14::2",
-                                        "remote-as": "AS_Y"
+                                        "remote-as": 2
                                     }
                                 ]
                             }
@@ -217,21 +307,41 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:3::1",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::1",
+                                        "remote-as": 1
                                     },
                                     {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor": "2001:100:4:12::1",
-                                        "remote-as": "AS_X"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::2",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::3",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::4",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::5",
+                                        "remote-as": 1
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::6",
+                                        "remote-as": 1
                                     }
                                 ],
                                 "ebgp": [
                                     {
                                         "interface": "GigabitEthernet2/0",
                                         "neighbor": "2001:100:4:4::2",
-                                        "remote-as": "AS_Y"
+                                        "remote-as": 2
                                     }
                                 ]
                             }
@@ -264,21 +374,41 @@
                             "bgp":{
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:15::2",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::9",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor": "2001:100:4:17::2",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::10",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::11",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::12",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::13",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::14",
+                                        "remote-as": 2
                                     }
                                 ],
                                 "ebgp": [
                                     {
                                         "interface": "GigabitEthernet2/0",
                                         "neighbor": "2001:100:4:14::1",
-                                        "remote-as": "AS_X"
+                                        "remote-as": 1
                                     }
                                 ]
                             }
@@ -305,19 +435,34 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:5::2",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::8",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:6::2",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::10",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface":"GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:7::2",
-                                        "remote-as": "AS_Y"
+                                        "interface":"loopback0",
+                                        "neighbor": "2001:100:4::11",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::12",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::13",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::14",
+                                        "remote-as": 2
                                     }
                                 ],
                                 "ebgp": 
@@ -326,7 +471,7 @@
                                     {
                                         "interface": "GigabitEthernet2/0",
                                         "neighbor": "2001:100:4:4::1",
-                                        "remote-as": "AS_X"
+                                        "remote-as": 1
                                     }
                                 ]
                             }
@@ -355,24 +500,34 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:19::2",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::8",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:18::2",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::9",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor": "2001:100:4:16::1",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::11",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface": "GigabitEthernet4/0",
-                                        "neighbor": "2001:100:4:15::1",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::12",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::13",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::14",
+                                        "remote-as": 2
                                     }
                                 ]
                             }
@@ -401,25 +556,36 @@
                             "bgp":{
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:6::2",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::8",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:18::1",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::9",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor": "2001:100:4:17::1",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::10",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface": "GigabitEthernet4/0",
-                                        "neighbor": "2001:100:4:5::1",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::12",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::13",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::14",
+                                        "remote-as": 2
                                     }
+
                                 ]
                             }
                         }
@@ -445,19 +611,34 @@
                             "bgp":{
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:21::2",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::8",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:20::1",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::9",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor": "2001:100:4:19::1",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::10",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::11",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::13",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::14",
+                                        "remote-as": 2
                                     }
                                 ]
                             }
@@ -484,19 +665,34 @@
                             "bgp":{
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:7::2",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::8",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:20::2",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::9",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface": "GigabitEthernet3/0",
-                                        "neighbor": "2001:100:4:6::1",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::10",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::11",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::12",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::14",
+                                        "remote-as": 2
                                     }
                                 ]
                             }
@@ -521,14 +717,34 @@
                             "bgp":{
                                 "ibgp": [
                                     {
-                                        "interface": "GigabitEthernet1/0",
-                                        "neighbor": "2001:100:4:7::1",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::8",
+                                        "remote-as": 2
                                     },
                                     {
-                                        "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:21::1",
-                                        "remote-as": "AS_Y"
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::9",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::10",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::11",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::12",
+                                        "remote-as": 2
+                                    },
+                                    {
+                                        "interface": "loopback0",
+                                        "neighbor": "2001:100:4::13",
+                                        "remote-as": 2
                                     }
                                 ]
                             }
