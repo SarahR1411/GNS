@@ -287,7 +287,29 @@
                                     {
                                         "interface": "GigabitEthernet2/0",
                                         "neighbor": "2001:100:4:14::2",
-                                        "remote-as": 2
+                                        "remote-as": 2,
+                                        "prefix-lists": {
+                                            "inbound": {
+                                                "name": "ALLOW_IN",
+                                                "rules": [
+                                                {
+                                                    "seq": 10,
+                                                    "action": "permit",
+                                                    "prefix": "2001:100:4:2::/64"
+                                                }
+                                                ]
+                                            },
+                                            "outbound": {
+                                                "name": "ALLOW_OUT",
+                                                "rules": [
+                                                {
+                                                    "seq": 10,
+                                                    "action": "permit",
+                                                    "prefix": "2001:100:4:1::/64"
+                                                }
+                                                ]
+                                            }
+                                        }
                                     }
                                 ]
                             }
@@ -341,7 +363,29 @@
                                     {
                                         "interface": "GigabitEthernet2/0",
                                         "neighbor": "2001:100:4:4::2",
-                                        "remote-as": 2
+                                        "remote-as": 2,
+                                        "prefix-lists": {
+                                            "inbound": {
+                                                "name": "ALLOW_IN",
+                                                "rules": [
+                                                {
+                                                    "seq": 10,
+                                                    "action": "permit",
+                                                    "prefix": "2001:100:4:2::/64"
+                                                }
+                                                ]
+                                            },
+                                            "outbound": {
+                                                "name": "ALLOW_OUT",
+                                                "rules": [
+                                                {
+                                                    "seq": 10,
+                                                    "action": "permit",
+                                                    "prefix": "2001:100:4:1::/64"
+                                                }
+                                                ]
+                                            }
+                                        }
                                     }
                                 ]
                             }
@@ -408,7 +452,29 @@
                                     {
                                         "interface": "GigabitEthernet2/0",
                                         "neighbor": "2001:100:4:14::1",
-                                        "remote-as": 1
+                                        "remote-as": 1,
+                                        "prefix-lists": {
+                                            "inbound": {
+                                                "name": "ALLOW_IN",
+                                                "rules": [
+                                                    {
+                                                        "seq": 10,
+                                                        "action": "permit",
+                                                        "prefix": "2001:100:4:1::/64"
+                                                    }
+                                                ]
+                                            },
+                                            "outbound": {
+                                                "name": "ALLOW_OUT",
+                                                "rules": [
+                                                    {
+                                                        "seq": 10,
+                                                        "action": "permit",
+                                                        "prefix": "2001:100:4:2::/64"
+                                                    }
+                                                ]
+                                            }
+                                        }
                                     }
                                 ]
                             }
@@ -465,13 +531,33 @@
                                         "remote-as": 2
                                     }
                                 ],
-                                "ebgp": 
-                                    
-                                    [
+                                "ebgp": [
                                     {
                                         "interface": "GigabitEthernet2/0",
                                         "neighbor": "2001:100:4:4::1",
-                                        "remote-as": 1
+                                        "remote-as": 1,
+                                        "prefix-lists": {
+                                            "inbound": {
+                                                "name": "ALLOW_IN",
+                                                "rules": [
+                                                    {
+                                                        "seq": 10,
+                                                        "action": "permit",
+                                                        "prefix": "2001:100:4:1::/64"
+                                                    }
+                                                ]
+                                            },
+                                            "outbound": {
+                                                "name": "ALLOW_OUT",
+                                                "rules": [
+                                                    {
+                                                        "seq": 10,
+                                                        "action": "permit",
+                                                        "prefix": "2001:100:4:2::/64"
+                                                    }
+                                                ]
+                                            }
+                                        }
                                     }
                                 ]
                             }
