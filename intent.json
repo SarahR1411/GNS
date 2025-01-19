@@ -6,7 +6,7 @@
                     "R1": {
                         "router-id": "1.1.1.1",
                         "interfaces": {
-                            "loopback": "2001:100:4::1/128",
+                            "Loopback0": "2001:100:4::1/128",
                             "GigabitEthernet1/0": "2001:100:4:8::1/64",
                             "GigabitEthernet2/0": "2001:100:4:1::1/64"
                         },
@@ -16,32 +16,32 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::2",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::3",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::4",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::5",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::6",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::7",
                                         "remote-as": 1
                                     }
@@ -52,7 +52,7 @@
                     "R2": {
                         "router-id": "2.2.2.2",
                         "interfaces": {
-                            "loopback": "2001:100:4::2/128",
+                            "Loopback0": "2001:100:4::2/128",
                             "GigabitEthernet1/0": "2001:100:4:8::2/64",
                             "GigabitEthernet2/0": "2001:100:4:9::2/64",
                             "GigabitEthernet3/0": "2001:100:4:10::1/64"
@@ -63,32 +63,32 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::1",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::3",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::4",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::5",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::6",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::7",
                                         "remote-as": 1
                                     }
@@ -99,7 +99,7 @@
                     "R3": {
                         "router-id": "3.3.3.3",
                         "interfaces": {
-                            "loopback": "2001:100:4::3/128",
+                            "Loopback0": "2001:100:4::3/128",
                             "GigabitEthernet1/0": "2001:100:4:1::2/64",
                             "GigabitEthernet2/0": "2001:100:4:9::1/64",
                             "GigabitEthernet3/0": "2001:100:4:2::1/64"
@@ -110,32 +110,32 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::1",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::2",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::4",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::5",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::6",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::7",
                                         "remote-as": 1
                                     }
@@ -146,7 +146,7 @@
                     "R4": {
                         "router-id": "4.4.4.4",
                         "interfaces": {
-                            "loopback": "2001:100:4::4/128",
+                            "Loopback0": "2001:100:4::4/128",
                             "GigabitEthernet1/0": "2001:100:4:10::2/64",
                             "GigabitEthernet2/0": "2001:100:4:7::2/64",
                             "GigabitEthernet3/0": "2001:100:4:12::1/64",
@@ -158,32 +158,32 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::1",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::2",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::3",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::5",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::6",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::7",
                                         "remote-as": 1
                                     }
@@ -194,7 +194,7 @@
                     "R5": {
                         "router-id": "5.5.5.5",
                         "interfaces": {
-                            "loopback": "2001:100:4::5/128",
+                            "Loopback0": "2001:100:4::5/128",
                             "GigabitEthernet1/0": "2001:100:4:2::2/64",
                             "GigabitEthernet2/0": "2001:100:4:7::1/64",
                             "GigabitEthernet3/0": "2001:100:4:13::1/64",
@@ -206,32 +206,32 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::1",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::2",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::3",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::4",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::6",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::7",
                                         "remote-as": 1
                                     }
@@ -242,7 +242,7 @@
                     "R6": {
                         "router-id": "6.6.6.6",
                         "interfaces": {
-                            "loopback": "2001:100:4::6/128",
+                            "Loopback0": "2001:100:4::6/128",
                             "GigabitEthernet1/0": "2001:100:4:11::2/64",
                             "GigabitEthernet3/0": "2001:100:4:13::2/64",
                             "GigabitEthernet2/0": "2001:100:4:14::1/64"
@@ -253,32 +253,32 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::1",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::2",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::3",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::4",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::5",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::7",
                                         "remote-as": 1
                                     }
@@ -318,7 +318,7 @@
                     "R7": {
                         "router-id": "7.7.7.7",
                         "interfaces": {
-                            "loopback": "2001:100:4::7/128",
+                            "Loopback0": "2001:100:4::7/128",
                             "GigabitEthernet1/0": "2001:100:4:3::2/64",
                             "GigabitEthernet3/0": "2001:100:4:12::2/64",
                             "GigabitEthernet2/0": "2001:100:4:4::1/64"
@@ -329,38 +329,40 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::1",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::2",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::3",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::4",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::5",
                                         "remote-as": 1
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::6",
                                         "remote-as": 1
                                     }
                                 ],
                                 "ebgp": [
-                                    {
+                                    {   "advertise":[
+                                            "2001:100:4:1::/64"
+                                        ],
                                         "interface": "GigabitEthernet2/0",
                                         "neighbor": "2001:100:4:4::2",
                                         "remote-as": 2,
@@ -400,7 +402,7 @@
                     "R8": {
                         "router-id": "8.8.8.8",
                         "interfaces": {
-                            "loopback": "2001:100:4::8/128",
+                            "Loopback0": "2001:100:4::8/128",
                             "GigabitEthernet1/0": "2001:100:4:15::1/64",
                             "GigabitEthernet2/0": "2001:100:4:14::2/64",
                             "GigabitEthernet3/0": "2001:100:4:17::1/64"
@@ -418,32 +420,32 @@
                             "bgp":{
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::9",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::10",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::11",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::12",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::13",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::14",
                                         "remote-as": 2
                                     }
@@ -483,7 +485,7 @@
                     "R9": {
                         "router-id": "9.9.9.9",
                         "interfaces": {
-                            "loopback": "2001:100:4::9/128",
+                            "Loopback0": "2001:100:4::9/128",
                             "GigabitEthernet1/0": "2001:100:4:5::1/64",
                             "GigabitEthernet2/0": "2001:100:4:4::2/64",
                             "GigabitEthernet3/0": "2001:100:4:16::1/64"
@@ -501,38 +503,40 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::8",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::10",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface":"loopback0",
+                                        "interface":"Loopback0",
                                         "neighbor": "2001:100:4::11",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::12",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::13",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::14",
                                         "remote-as": 2
                                     }
                                 ],
                                 "ebgp": [
-                                    {
+                                    {   "advertise":[
+                                            "2001:100:4:7::/64"
+                                        ],
                                         "interface": "GigabitEthernet2/0",
                                         "neighbor": "2001:100:4:4::1",
                                         "remote-as": 1,
@@ -566,7 +570,7 @@
                     "R10": {
                         "router-id": "10.10.10.10",
                         "interfaces": {
-                            "loopback": "2001:100:4::10/128",
+                            "Loopback0": "2001:100:4::10/128",
                             "GigabitEthernet1/0": "2001:100:4:19::1/64",
                             "GigabitEthernet2/0": "2001:100:4:18::1/64",
                             "GigabitEthernet3/0": "2001:100:4:16::2/64",
@@ -586,32 +590,32 @@
                             "bgp": {
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::8",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::9",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::11",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::12",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::13",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::14",
                                         "remote-as": 2
                                     }
@@ -622,7 +626,7 @@
                     "R11": {
                         "router-id": "11.11.11.11",
                         "interfaces": {
-                            "loopback": "2001:100:4::11/128",
+                            "Loopback0": "2001:100:4::11/128",
                             "GigabitEthernet1/0": "2001:100:4:6::1/64",
                             "GigabitEthernet2/0": "2001:100:4:18::2/64",
                             "GigabitEthernet3/0": "2001:100:4:17::2/64",
@@ -642,32 +646,32 @@
                             "bgp":{
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::8",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::9",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::10",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::12",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::13",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::14",
                                         "remote-as": 2
                                     }
@@ -679,7 +683,7 @@
                     "R12": {
                         "router-id": "12.12.12.12",
                         "interfaces": {
-                            "loopback": "2001:100:4::12/128",
+                            "Loopback0": "2001:100:4::12/128",
                             "GigabitEthernet1/0": "2001:100:4:21::1/64",
                             "GigabitEthernet2/0": "2001:100:4:20::2/64",
                             "GigabitEthernet3/0": "2001:100:4:19::2/64"
@@ -697,32 +701,32 @@
                             "bgp":{
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::8",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::9",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::10",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::11",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::13",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::14",
                                         "remote-as": 2
                                     }
@@ -733,7 +737,7 @@
                     "R13": {
                         "router-id": "13.13.13.13",
                         "interfaces": {
-                            "loopback": "2001:100:4::13/128",
+                            "Loopback0": "2001:100:4::13/128",
                             "GigabitEthernet1/0": "2001:100:4:7::1/64",
                             "GigabitEthernet2/0": "2001:100:4:20::1/64",
                             "GigabitEthernet3/0": "2001:100:4:6::2/64"
@@ -751,32 +755,32 @@
                             "bgp":{
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::8",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::9",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::10",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::11",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::12",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::14",
                                         "remote-as": 2
                                     }
@@ -787,7 +791,7 @@
                     "R14": {
                         "router-id": "14.14.14.14",
                         "interfaces": {
-                            "loopback": "2001:100:4::14/128",
+                            "Loopback0": "2001:100:4::14/128",
                             "GigabitEthernet1/0": "2001:100:4:7::2/64",
                             "GigabitEthernet2/0": "2001:100:4:21::2/64"
                         },
@@ -803,32 +807,32 @@
                             "bgp":{
                                 "ibgp": [
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::8",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::9",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::10",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::11",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::12",
                                         "remote-as": 2
                                     },
                                     {
-                                        "interface": "loopback0",
+                                        "interface": "Loopback0",
                                         "neighbor": "2001:100:4::13",
                                         "remote-as": 2
                                     }
