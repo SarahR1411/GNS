@@ -46,7 +46,7 @@ def move_configs():
         router_folder = os.path.join(destination, folder_id)  # Router's main folder
         dest_folder = os.path.join(router_folder, "configs")  # 'configs' subfolder
         src_file = os.path.join(config_folder, f"R{router_number}_startup-config.cfg")
-        dest_file = os.path.join(dest_folder, f"{router_name}_startup-config.cfg")
+        dest_file = os.path.join(dest_folder, f"{router_name}_startup-config.cfg") #the config file must contain the node's local id or else GNS won't recognize it
 
         # Delete NVRAM file in the router's main folder
         delete_nvram_file(router_folder)
@@ -61,34 +61,6 @@ def move_configs():
                 os.makedirs(dest_folder)
             shutil.move(src_file, dest_file)
             print(f"Moved {src_file} to {dest_file}")
-        else:
-            print(f"Source file not found: {src_file}")
-
-if __name__ == "__main__":
-    move_configs()
-
-
-def move_configs():
-    for router_number, folder_id in router_folder_corresp.items():
-        device_name = f"R{router_number}"
-        router_folder = os.path.join(destination, folder_id)
-        configs_folder = os.path.join(router_folder, "configs")
-        src_file = os.path.join(config_folder, f"R{router_number}_startup-config.cfg")
-        dest_file = os.path.join(configs_folder, "startup-config")
-
-        # Delete NVRAM file in the router's main folder
-        delete_nvram_file(router_folder)
-
-        # Delete existing .cfg files in the 'configs' subfolder
-        if os.path.exists(configs_folder):
-            delete_existing_cfg_files(configs_folder)
-
-        # Move the new configuration file
-        if os.path.exists(src_file):
-            if not os.path.exists(configs_folder):
-                os.makedirs(configs_folder)
-            shutil.copy(src_file, dest_file)
-            print(f"Copied {src_file} to {dest_file}")
         else:
             print(f"Source file not found: {src_file}")
 
