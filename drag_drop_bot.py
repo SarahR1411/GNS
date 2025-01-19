@@ -1,7 +1,7 @@
 import os
 import shutil
 
-# Updated dictionary to include folder ID and router name
+
 router_folder_corresp = {
     5 : ("0cdfc724-c2af-4ebf-8da6-a9f2adb35c51", "i3"),
     14 : ("2afa751b-268b-4974-ba16-2bec9036dfef", "i7"),
@@ -35,14 +35,13 @@ def delete_nvram_file(router_folder):
     """Delete the NVRAM file in the router folder (not in the configs subfolder)."""
     if os.path.exists(router_folder):
         for file in os.listdir(router_folder):
-            if "nvram" in file:  # Identify any file containing 'nvram' in its name
+            if "nvram" in file:  # find any file containing 'nvram' in its name
                 file_path = os.path.join(router_folder, file)
                 os.remove(file_path)
                 print(f"Deleted NVRAM file: {file_path}")
 
 def move_configs():
     for router_number, (folder_id, router_name) in router_folder_corresp.items():
-        # Extract the actual folder ID (first element of the tuple)
         router_folder = os.path.join(destination, folder_id)  # Router's main folder
         dest_folder = os.path.join(router_folder, "configs")  # 'configs' subfolder
         src_file = os.path.join(config_folder, f"R{router_number}_startup-config.cfg")
@@ -55,7 +54,7 @@ def move_configs():
         if os.path.exists(dest_folder):
             delete_existing_cfg_files(dest_folder)
 
-        # Move the new configuration file
+        # Move the new config file
         if os.path.exists(src_file):
             if not os.path.exists(dest_folder):
                 os.makedirs(dest_folder)
