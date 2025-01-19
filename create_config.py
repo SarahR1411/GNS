@@ -113,7 +113,7 @@ def main():
         for as_name, content in as_data.items():
             for router_name, router_data in content["routers"].items():
                 config = create_config(router_name, router_data, as_name)
-                output = os.path.join("config_files", f"{router_name}_startup.cfg")
+                output = os.path.join("config_files", f"{router_name}_startup-config.cfg")
                 with open(output, "w") as config_file:
                     config_file.write(config) 
                 print(f"Generated config file for {router_name} at {output}")
