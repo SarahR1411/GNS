@@ -76,9 +76,10 @@ def get_interface_subnet(router_name, interface_name, base_prefix, intent, as_na
 
 def generate_ip_with_peer(router_name, interface_name, as_name, intent, base_prefixes):
     """
-    Generate an IPv6 address for an interface considering peer connections from the intent file.
+    Generate an IPv6 address for an interface considering both peer links and standalone interfaces.
     """
     base_prefix = base_prefixes[as_name]
+    router_nbr = int(router_name.lstrip("R"))
 
     # Find the router and its links in the intent file
     for as_entry in intent["network"]:
@@ -88,20 +89,37 @@ def generate_ip_with_peer(router_name, interface_name, as_name, intent, base_pre
             if not current_router or "links" not in current_router:
                 continue
 
-            # loop through the links to find a match for the interface
+            # Check if the interface is part of a link
             for link in current_router["links"]:
                 if link["interface"] == interface_name:
                     target_router = link["target_router"]
                     target_interface = link["target_interface"]
+                    target_router_nbr = int(target_router.lstrip("R"))
 
-                    # assign ::1 for this router and ::2 for the peer
+                    # Determine the shared subnet
+                    shared_subnet = f"{base_prefix}:{min(router_nbr, target_router_nbr)}:{max(router_nbr, target_router_nbr)}"
+
+                    # Assign unique host IDs based on router order
                     if router_name < target_router:
-                        return f"{base_prefix}:{router_name.lstrip('R')}:{interface_name.split('/')[-1]}::1/64"
+                        return f"{shared_subnet}::1/64"
                     else:
-                        return f"{base_prefix}:{target_router.lstrip('R')}:{target_interface.split('/')[-1]}::2/64"
+                        return f"{shared_subnet}::2/64"
 
-    # Ddefault fallback for non-linked interfaces
-    return generate_ip(interface_name, int(router_name.lstrip("R")), base_prefix)
+    # for non-linked interfaces 
+    if interface_name.startswith("Loopback"):
+        return f"{base_prefix}::{router_nbr}/128"
+    elif interface_name.startswith("GigabitEthernet"):
+        # Split the interface into main and sub-interface
+        try:
+            interface_parts = interface_name.split("/")
+            main_interface = int(interface_parts[0][-1]) 
+            sub_interface = int(interface_parts[1])      
+            return f"{base_prefix}:{router_nbr}:{main_interface}:{sub_interface}::1/64"
+        except (IndexError, ValueError):
+            # if malformed interface names
+            raise ValueError(f"Invalid interface name format: {interface_name}")
+    else:
+        raise ValueError(f"Unknown interface type: {interface_name}")
 
 
 def create_config(router_name, router_data, as_name, router_nbr):
