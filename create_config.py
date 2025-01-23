@@ -23,19 +23,30 @@ def get_as_of_router(router_name, intent):
 
 
 def generate_ip(interface_name, router_nbr, base_prefix):
+    """
+    Generate an IPv6 address for a given interface name and router number.
+    """
     if interface_name.startswith("Loopback"):
         return f"{base_prefix}::{router_nbr}/128"
     elif interface_name.startswith("GigabitEthernet"):
-        interface_num = int(interface_name.split("/")[1])
-        return f"{base_prefix}:{router_nbr}:{interface_num}::1/64"
+        interface_parts = interface_name.split("/")
+        main_interface = int(interface_parts[0][-1])
+        sub_interface = int(interface_parts[1])
+        return f"{base_prefix}:{router_nbr}:{main_interface}:{sub_interface}::1/64"
     return None
 
 def get_interface_subnet(router_name, interface_name, base_prefix):
+    """
+    Generate the IPv6 subnet for a given interface name and router number.
+    """
     router_nbr = int(router_name.lstrip("R"))
     if interface_name.startswith("GigabitEthernet"):
-        interface_num = int(interface_name.split("/")[-1])
-        return f"{base_prefix}:{router_nbr}:{interface_num}::/64"
+        interface_parts = interface_name.split("/")
+        main_interface = int(interface_parts[0][-1])  
+        sub_interface = int(interface_parts[1]) 
+        return f"{base_prefix}:{router_nbr}:{main_interface}:{sub_interface}::/64"
     return None
+
 
 
 def create_config(router_name, router_data, as_name, router_nbr):
