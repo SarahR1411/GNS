@@ -295,9 +295,9 @@
                                                 "name": "ALLOW_IN",
                                                 "rules": [
                                                 {
-                                                    "seq": 10,
+                                                    "seq": 20,
                                                     "action": "permit",
-                                                    "prefix": "2001:100:4:21::/64"
+                                                    "prefix": "2001:100:4:10::/64"
                                                 }
                                                 ]
                                             },
@@ -305,7 +305,7 @@
                                                 "name": "ALLOW_OUT",
                                                 "rules": [
                                                 {
-                                                    "seq": 10,
+                                                    "seq": 20,
                                                     "action": "permit",
                                                     "prefix": "2001:100:4:8::/64"
                                                 }
@@ -373,7 +373,7 @@
                                                 "name": "ALLOW_IN",
                                                 "rules": [
                                                 {
-                                                    "seq": 10,
+                                                    "seq": 30,
                                                     "action": "permit",
                                                     "prefix": "2001:100:4:22::/64"
                                                 }
@@ -383,7 +383,7 @@
                                                 "name": "ALLOW_OUT",
                                                 "rules": [
                                                 {
-                                                    "seq": 10,
+                                                    "seq": 30,
                                                     "action": "permit",
                                                     "prefix": "2001:100:4:1::/64"
                                                 }
@@ -464,9 +464,9 @@
                                                 "name": "ALLOW_IN",
                                                 "rules": [
                                                     {
-                                                        "seq": 10,
+                                                        "seq": 20,
                                                         "action": "permit",
-                                                        "prefix": "2001:100:4:8::/64"
+                                                        "prefix": "2001:100:4:10::/64"
                                                     }
                                                 ]
                                             },
@@ -474,9 +474,9 @@
                                                 "name": "ALLOW_OUT",
                                                 "rules": [
                                                     {
-                                                        "seq": 10,
+                                                        "seq": 20,
                                                         "action": "permit",
-                                                        "prefix": "2001:100:4:21::/64"
+                                                        "prefix": "2001:100:4:10::/64"
                                                     }
                                                 ]
                                             }
@@ -549,7 +549,7 @@
                                                 "name": "ALLOW_IN",
                                                 "rules": [
                                                     {
-                                                        "seq": 10,
+                                                        "seq": 30,
                                                         "action": "permit",
                                                         "prefix": "2001:100:4:1::/64"
                                                     }
@@ -559,7 +559,7 @@
                                                 "name": "ALLOW_OUT",
                                                 "rules": [
                                                     {
-                                                        "seq": 10,
+                                                        "seq": 30,
                                                         "action": "permit",
                                                         "prefix": "2001:100:4:22::/64"
                                                     }
