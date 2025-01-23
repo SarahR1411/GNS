@@ -75,9 +75,9 @@ def create_config(router_name, router_data, as_name):
 
         config.append("address-family ipv6")
         if "ebgp" in bgp_config:
-            # if "advertise" in bgp_config['ebgp'][0]:
-            #     for net in bgp_config['ebgp'][0]['advertise']:
-            #         config.append(f" network {net}") 
+            if "advertise" in bgp_config['ebgp'][0]:
+                for net in bgp_config['ebgp'][0]['advertise']:
+                    config.append(f" network {net}") 
             for ebgp in bgp_config["ebgp"]:
                 config.append(f" neighbor {ebgp['neighbor']} activate")
         for ibgp in bgp_config['ibgp']:
