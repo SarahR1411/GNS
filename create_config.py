@@ -169,6 +169,7 @@ def create_config(router_name, router_data, as_name, router_nbr):
         config.append(" negotiation auto")
         config.append(f" ipv6 address {ipv6_address}")
         config.append(" ipv6 enable")
+        config.append(" no shutdown")
         if router_data["protocols"].get("ripng"):
             config.append(f" ipv6 rip {process_id} enable")
         if "ospf" in router_data["protocols"]:
