@@ -232,7 +232,7 @@ def create_config(router_name, router_data, as_name, router_nbr):
             config.append(f" neighbor {neighbor_ip} activate")
 
     if "address-family ipv6" not in config:
-        config.append("address-family ipv6")
+        config.append("!\naddress-family ipv6")
     for ip in ibgp_list:
         config.append(f" neighbor {ip} activate")
         
