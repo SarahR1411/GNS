@@ -4,392 +4,113 @@
             "AS_X": {
                 "routers": {
                     "R1": {
-                        "router-id": "1.1.1.1",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::1/128",
-                            "GigabitEthernet1/0": "2001:100:4:8::1/64",
-                            "GigabitEthernet2/0": "2001:100:4:1::1/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0"
+                        ],
                         "protocols": {
                             "ripng": true,
-                            "process-id": 1,
                             "bgp": {
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::2",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::3",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::4",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::5",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::6",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::7",
-                                        "remote-as": 1
-                                    }
-                                ]
+                                "ibgp": true
                             }
                         }
                     },
                     "R2": {
-                        "router-id": "2.2.2.2",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::2/128",
-                            "GigabitEthernet1/0": "2001:100:4:8::2/64",
-                            "GigabitEthernet2/0": "2001:100:4:9::2/64",
-                            "GigabitEthernet3/0": "2001:100:4:10::1/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0",
+                            "GigabitEthernet3/0"
+                        ],
                         "protocols": {
                             "ripng": true,
-                            "process-id": 2,
                             "bgp": {
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::1",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::3",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::4",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::5",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::6",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::7",
-                                        "remote-as": 1
-                                    }
-                                ]
+                                "ibgp": true
                             }
                         }
                     },
                     "R3": {
-                        "router-id": "3.3.3.3",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::3/128",
-                            "GigabitEthernet1/0": "2001:100:4:1::2/64",
-                            "GigabitEthernet2/0": "2001:100:4:9::1/64",
-                            "GigabitEthernet3/0": "2001:100:4:2::1/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0",
+                            "GigabitEthernet3/0"
+                        ],
                         "protocols": {
                             "ripng": true,
-                            "process-id": 3,
                             "bgp": {
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::1",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::2",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::4",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::5",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::6",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::7",
-                                        "remote-as": 1
-                                    }
-                                ]
+                                "ibgp": true
                             }
                         }
                     },
                     "R4": {
-                        "router-id": "4.4.4.4",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::4/128",
-                            "GigabitEthernet1/0": "2001:100:4:10::2/64",
-                            "GigabitEthernet2/0": "2001:100:4:7::2/64",
-                            "GigabitEthernet3/0": "2001:100:4:12::1/64",
-                            "GigabitEthernet4/0": "2001:100:4:11::1/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0",
+                            "GigabitEthernet3/0",
+                            "GigabitEthernet4/0"
+                        ],
                         "protocols": {
                             "ripng": true,
-                            "process-id": 4,
                             "bgp": {
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::1",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::2",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::3",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::5",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::6",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::7",
-                                        "remote-as": 1
-                                    }
-                                ]
+                                "ibgp": true
                             }
                         }
                     },
                     "R5": {
-                        "router-id": "5.5.5.5",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::5/128",
-                            "GigabitEthernet1/0": "2001:100:4:2::2/64",
-                            "GigabitEthernet2/0": "2001:100:4:7::1/64",
-                            "GigabitEthernet3/0": "2001:100:4:13::1/64",
-                            "GigabitEthernet4/0": "2001:100:4:3::1/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0",
+                            "GigabitEthernet3/0",
+                            "GigabitEthernet4/0"
+                        ],
                         "protocols": {
                             "ripng": true,
-                            "process-id": 5,
                             "bgp": {
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::1",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::2",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::3",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::4",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::6",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::7",
-                                        "remote-as": 1
-                                    }
-                                ]
+                                "ibgp": true
                             }
                         }
                     },
                     "R6": {
-                        "router-id": "6.6.6.6",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::6/128",
-                            "GigabitEthernet1/0": "2001:100:4:11::2/64",
-                            "GigabitEthernet3/0": "2001:100:4:13::2/64",
-                            "GigabitEthernet2/0": "2001:100:4:14::1/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet3/0",
+                            "GigabitEthernet2/0"
+                        ],
                         "protocols": {
                             "ripng": true,
-                            "process-id": 6,
                             "bgp": {
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::1",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::2",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::3",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::4",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::5",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::7",
-                                        "remote-as": 1
-                                    }
-                                ],
+                                "ibgp": true,
                                 "ebgp": [
-                                    {   "advertise":[
-                                            "2001:100:4:8::/64"
-                                        ],
+                                    {
                                         "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:14::2",
-                                        "remote-as": 2,
-                                        "prefix-lists": {
-                                            "inbound": {
-                                                "name": "ALLOW_IN",
-                                                "rules": [
-                                                {
-                                                    "seq": 20,
-                                                    "action": "permit",
-                                                    "prefix": "2001:100:4:21::/64"
-                                                }
-                                                ]
-                                            },
-                                            "outbound": {
-                                                "name": "ALLOW_OUT",
-                                                "rules": [
-                                                {
-                                                    "seq": 20,
-                                                    "action": "permit",
-                                                    "prefix": "2001:100:4:8::/64"
-                                                }
-                                                ]
-                                            }
-                                        }
+                                        "target_router": "R8",
+                                        "advertise": "R1"
                                     }
                                 ]
                             }
                         }
                     },
                     "R7": {
-                        "router-id": "7.7.7.7",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::7/128",
-                            "GigabitEthernet1/0": "2001:100:4:3::2/64",
-                            "GigabitEthernet3/0": "2001:100:4:12::2/64",
-                            "GigabitEthernet2/0": "2001:100:4:4::1/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet3/0",
+                            "GigabitEthernet2/0"
+                        ],
                         "protocols": {
                             "ripng": true,
-                            "process-id": 7,
                             "bgp": {
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::1",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::2",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::3",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::4",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::5",
-                                        "remote-as": 1
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::6",
-                                        "remote-as": 1
-                                    }
-                                ],
+                                "ibgp": true,
                                 "ebgp": [
-                                    {   "advertise":[
-                                            "2001:100:4:1::/64"
-                                        ],
+                                    {
                                         "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:4::2",
-                                        "remote-as": 2,
-                                        "prefix-lists": {
-                                            "inbound": {
-                                                "name": "ALLOW_IN",
-                                                "rules": [
-                                                {
-                                                    "seq": 30,
-                                                    "action": "permit",
-                                                    "prefix": "2001:100:4:22::/64"
-                                                }
-                                                ]
-                                            },
-                                            "outbound": {
-                                                "name": "ALLOW_OUT",
-                                                "rules": [
-                                                {
-                                                    "seq": 30,
-                                                    "action": "permit",
-                                                    "prefix": "2001:100:4:1::/64"
-                                                }
-                                                ]
-                                            }
-                                        }
+                                        "target_router": "R8",
+                                        "advertise": "R1"
                                     }
                                 ]
                             }
@@ -402,445 +123,115 @@
             "AS_Y":{
                 "routers":{
                     "R8": {
-                        "router-id": "8.8.8.8",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::8/128",
-                            "GigabitEthernet1/0": "2001:100:4:15::1/64",
-                            "GigabitEthernet2/0": "2001:100:4:14::2/64",
-                            "GigabitEthernet3/0": "2001:100:4:17::1/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0",
+                            "GigabitEthernet3/0"
+                        ],
                         "protocols": {
-                            "process-id": 8,
-                            "ospf": {
-                                "networks": {
-                                    "2001:100:4::8/128": {"area": 0},
-                                    "2001:100:4:14::/64": {"area": 0},
-                                    "2001:100:4:15::/64": {"area": 0},
-                                    "2001:100:4:17::/64": {"area": 0}
-                                }
-                            },
+                            "ospf": true,
                             "bgp":{
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::9",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::10",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::11",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::12",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::13",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::14",
-                                        "remote-as": 2
-                                    }
-                                ],
+                                "ibgp": true,
                                 "ebgp": [
-                                    {   "advertise":[
-                                            "2001:100:4:21::/64"
-                                        ],
+                                    { 
                                         "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:14::1",
-                                        "remote-as": 1,
-                                        "prefix-lists": {
-                                            "inbound": {
-                                                "name": "ALLOW_IN",
-                                                "rules": [
-                                                    {
-                                                        "seq": 20,
-                                                        "action": "permit",
-                                                        "prefix": "2001:100:4:10::/64"
-                                                    }
-                                                ]
-                                            },
-                                            "outbound": {
-                                                "name": "ALLOW_OUT",
-                                                "rules": [
-                                                    {
-                                                        "seq": 20,
-                                                        "action": "permit",
-                                                        "prefix": "2001:100:4:10::/64"
-                                                    }
-                                                ]
-                                            }
-                                        }
+                                        "target_router": "R6",
+                                        "advertise": "R14"
                                     }
                                 ]
                             }
                         }
                     },
                     "R9": {
-                        "router-id": "9.9.9.9",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::9/128",
-                            "GigabitEthernet1/0": "2001:100:4:5::1/64",
-                            "GigabitEthernet2/0": "2001:100:4:4::2/64",
-                            "GigabitEthernet3/0": "2001:100:4:16::1/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0",
+                            "GigabitEthernet3/0"
+                        ],
                         "protocols": {
-                            "process-id": 9,
-                            "ospf": {
-                                "networks": {
-                                    "2001:100:4::9/128": {"area": 0},
-                                    "2001:100:4:4::/64": {"area": 0},
-                                    "2001:100:4:5::/64": {"area": 0},
-                                    "2001:100:4:6::/64": {"area": 0}
-                                }
-                            },
+                            "ospf": true,
                             "bgp": {
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::8",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::10",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface":"Loopback0",
-                                        "neighbor": "2001:100:4::11",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::12",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::13",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::14",
-                                        "remote-as": 2
-                                    }
-                                ],
+                                "ibgp": true,
                                 "ebgp": [
-                                    {   "advertise":[
-                                            "2001:100:4:22::/64"
-                                        ],
+                                    {
                                         "interface": "GigabitEthernet2/0",
-                                        "neighbor": "2001:100:4:4::1",
-                                        "remote-as": 1,
-                                        "prefix-lists": {
-                                            "inbound": {
-                                                "name": "ALLOW_IN",
-                                                "rules": [
-                                                    {
-                                                        "seq": 30,
-                                                        "action": "permit",
-                                                        "prefix": "2001:100:4:1::/64"
-                                                    }
-                                                ]
-                                            },
-                                            "outbound": {
-                                                "name": "ALLOW_OUT",
-                                                "rules": [
-                                                    {
-                                                        "seq": 30,
-                                                        "action": "permit",
-                                                        "prefix": "2001:100:4:22::/64"
-                                                    }
-                                                ]
-                                            }
-                                        }
+                                        "target_router": "R7",
+                                        "advertise": "R14"
                                     }
                                 ]
                             }
                         }
                     },
                     "R10": {
-                        "router-id": "10.10.10.10",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::10/128",
-                            "GigabitEthernet1/0": "2001:100:4:19::1/64",
-                            "GigabitEthernet2/0": "2001:100:4:18::1/64",
-                            "GigabitEthernet3/0": "2001:100:4:16::2/64",
-                            "GigabitEthernet4/0": "2001:100:4:15::2/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0",
+                            "GigabitEthernet3/0",
+                            "GigabitEthernet4/0"
+                        ],
                         "protocols": {
-                            "process-id": 10,
-                            "ospf": {
-                                "networks": {
-                                    "2001:100:4:19::/64": {"area": 0},
-                                    "2001:100:4:18::/64": {"area": 0},
-                                    "2001:100:4:16::/64": {"area": 0},
-                                    "2001:100:4:15::/64": {"area": 0},
-                                    "2001:100:4::10/128": {"area": 0}
-                                }
-                            },
+                            "ospf": true,
                             "bgp": {
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::8",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::9",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::11",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::12",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::13",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::14",
-                                        "remote-as": 2
-                                    }
-                                ]
+                                "ibgp": true
                             }
                         }
                     },
                     "R11": {
-                        "router-id": "11.11.11.11",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::11/128",
-                            "GigabitEthernet1/0": "2001:100:4:6::1/64",
-                            "GigabitEthernet2/0": "2001:100:4:18::2/64",
-                            "GigabitEthernet3/0": "2001:100:4:17::2/64",
-                            "GigabitEthernet4/0": "2001:100:4:5::2/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0",
+                            "GigabitEthernet3/0",
+                            "GigabitEthernet4/0"
+                        ],
                         "protocols": {
-                            "process-id": 11,
-                            "ospf": {
-                                "networks": {
-                                    "2001:100:4:6::/64": {"area": 0},
-                                    "2001:100:4:18::/64": {"area": 0},
-                                    "2001:100:4:17::/64": {"area": 0},
-                                    "2001:100:4:5::/64": {"area": 0},
-                                    "2001:100:4::11/128": {"area": 0}
-                                }
-                            },
+                            "ospf": true,
                             "bgp":{
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::8",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::9",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::10",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::12",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::13",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::14",
-                                        "remote-as": 2
-                                    }
-
-                                ]
+                                "ibgp": true
                             }
                         }
                     },
                     "R12": {
-                        "router-id": "12.12.12.12",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::12/128",
-                            "GigabitEthernet1/0": "2001:100:4:21::1/64",
-                            "GigabitEthernet2/0": "2001:100:4:20::2/64",
-                            "GigabitEthernet3/0": "2001:100:4:19::2/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0",
+                            "GigabitEthernet3/0"
+                        ],
                         "protocols": {
-                            "process-id": 12,
-                            "ospf": {
-                                "networks": {
-                                    "2001:100:4:21::/64": {"area": 0},
-                                    "2001:100:4:20::/64": {"area": 0},
-                                    "2001:100:4:19::/64": {"area": 0},
-                                    "2001:100:4::12/128": {"area": 0}
-                                }
-                            },
+                            "ospf": true,
                             "bgp":{
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::8",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::9",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::10",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::11",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::13",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::14",
-                                        "remote-as": 2
-                                    }
-                                ]
+                                "ibgp": true
                             }
                         }
                     },
                     "R13": {
-                        "router-id": "13.13.13.13",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::13/128",
-                            "GigabitEthernet1/0": "2001:100:4:22::1/64",
-                            "GigabitEthernet2/0": "2001:100:4:20::1/64",
-                            "GigabitEthernet3/0": "2001:100:4:6::2/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0",
+                            "GigabitEthernet3/0"
+                        ],
                         "protocols": {
-                            "process-id": 13,
-                            "ospf": {
-                                "networks": {
-                                    "2001:100:4:22::/64": {"area": 0},
-                                    "2001:100:4:20::/64": {"area": 0},
-                                    "2001:100:4:6::/64": {"area": 0},
-                                    "2001:100:4::13/128": {"area": 0}
-                                }
-                            },
+                            "ospf": true,
                             "bgp":{
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::8",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::9",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::10",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::11",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::12",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::14",
-                                        "remote-as": 2
-                                    }
-                                ]
+                                "ibgp": true
                             }
                         }
                     },
                     "R14": {
-                        "router-id": "14.14.14.14",
-                        "interfaces": {
-                            "Loopback0": "2001:100:4::14/128",
-                            "GigabitEthernet1/0": "2001:100:4:22::2/64",
-                            "GigabitEthernet2/0": "2001:100:4:21::2/64"
-                        },
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0"
+                        ],
                         "protocols": {
-                            "process-id": 14,
-                            "ospf": {
-                                "networks": {
-                                    "2001:100:4:22::/64": {"area": 0},
-                                    "2001:100:4:21::/64": {"area": 0},
-                                    "2001:100:4::14/128": {"area": 0}
-                                }
-                            },
+                            "ospf": true,
                             "bgp":{
-                                "ibgp": [
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::8",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::9",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::10",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::11",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::12",
-                                        "remote-as": 2
-                                    },
-                                    {
-                                        "interface": "Loopback0",
-                                        "neighbor": "2001:100:4::13",
-                                        "remote-as": 2
-                                    }
-                                ]
+                                "ibgp": true
                             }
                         }
                     }
