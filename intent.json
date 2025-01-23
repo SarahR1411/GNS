@@ -9,6 +9,18 @@
                             "GigabitEthernet1/0",
                             "GigabitEthernet2/0"
                         ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R2",
+                            "target_interface": "GigabitEthernet1/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R3",
+                            "target_interface": "GigabitEthernet1/0"
+                        }
+                        ],
                         "protocols": {
                             "ripng": true,
                             "bgp": {
@@ -23,6 +35,23 @@
                             "GigabitEthernet2/0",
                             "GigabitEthernet3/0"
                         ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R1",
+                            "target_interface": "GigabitEthernet1/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet3/0",
+                            "target_router": "R4",
+                            "target_interface": "GigabitEthernet1/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R3",
+                            "target_interface": "GigabitEthernet2/0"
+                        }
+                        ],
                         "protocols": {
                             "ripng": true,
                             "bgp": {
@@ -36,6 +65,23 @@
                             "GigabitEthernet1/0",
                             "GigabitEthernet2/0",
                             "GigabitEthernet3/0"
+                        ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R1",
+                            "target_interface": "GigabitEthernet2/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R2",
+                            "target_interface": "GigabitEthernet2/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet3/0",
+                            "target_router": "R5",
+                            "target_interface": "GigabitEthernet1/0"
+                        }
                         ],
                         "protocols": {
                             "ripng": true,
@@ -52,6 +98,28 @@
                             "GigabitEthernet3/0",
                             "GigabitEthernet4/0"
                         ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R2",
+                            "target_interface": "GigabitEthernet3/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R5",
+                            "target_interface": "GigabitEthernet2/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet3/0",
+                            "target_router": "R7",
+                            "target_interface": "GigabitEthernet3/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet4/0",
+                            "target_router": "R6",
+                            "target_interface": "GigabitEthernet1/0"
+                        }
+                        ],
                         "protocols": {
                             "ripng": true,
                             "bgp": {
@@ -67,6 +135,28 @@
                             "GigabitEthernet3/0",
                             "GigabitEthernet4/0"
                         ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R3",
+                            "target_interface": "GigabitEthernet3/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R4",
+                            "target_interface": "GigabitEthernet2/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet3/0",
+                            "target_router": "R6",
+                            "target_interface": "GigabitEthernet3/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet4/0",
+                            "target_router": "R7",
+                            "target_interface": "GigabitEthernet1/0"
+                        }
+                        ],
                         "protocols": {
                             "ripng": true,
                             "bgp": {
@@ -80,6 +170,23 @@
                             "GigabitEthernet1/0",
                             "GigabitEthernet3/0",
                             "GigabitEthernet2/0"
+                        ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R4",
+                            "target_interface": "GigabitEthernet4/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R8",
+                            "target_interface": "GigabitEthernet2/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet3/0",
+                            "target_router": "R5",
+                            "target_interface": "GigabitEthernet3/0"
+                        }
                         ],
                         "protocols": {
                             "ripng": true,
@@ -101,6 +208,23 @@
                             "GigabitEthernet1/0",
                             "GigabitEthernet3/0",
                             "GigabitEthernet2/0"
+                        ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R5",
+                            "target_interface": "GigabitEthernet4/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R9",
+                            "target_interface": "GigabitEthernet2/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet3/0",
+                            "target_router": "R4",
+                            "target_interface": "GigabitEthernet3/0"
+                        }
                         ],
                         "protocols": {
                             "ripng": true,
@@ -129,6 +253,23 @@
                             "GigabitEthernet2/0",
                             "GigabitEthernet3/0"
                         ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R10",
+                            "target_interface": "GigabitEthernet4/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R6",
+                            "target_interface": "GigabitEthernet2/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet3/0",
+                            "target_router": "R11",
+                            "target_interface": "GigabitEthernet3/0"
+                        }
+                        ],
                         "protocols": {
                             "ospf": true,
                             "bgp":{
@@ -149,6 +290,23 @@
                             "GigabitEthernet1/0",
                             "GigabitEthernet2/0",
                             "GigabitEthernet3/0"
+                        ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R11",
+                            "target_interface": "GigabitEthernet4/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R7",
+                            "target_interface": "GigabitEthernet2/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet3/0",
+                            "target_router": "R10",
+                            "target_interface": "GigabitEthernet3/0"
+                        }
                         ],
                         "protocols": {
                             "ospf": true,
@@ -172,6 +330,28 @@
                             "GigabitEthernet3/0",
                             "GigabitEthernet4/0"
                         ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R12",
+                            "target_interface": "GigabitEthernet3/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R11",
+                            "target_interface": "GigabitEthernet2/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet3/0",
+                            "target_router": "R9",
+                            "target_interface": "GigabitEthernet3/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet4/0",
+                            "target_router": "R8",
+                            "target_interface": "GigabitEthernet1/0"
+                        }
+                        ],
                         "protocols": {
                             "ospf": true,
                             "bgp": {
@@ -187,6 +367,28 @@
                             "GigabitEthernet3/0",
                             "GigabitEthernet4/0"
                         ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R13",
+                            "target_interface": "GigabitEthernet3/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R10",
+                            "target_interface": "GigabitEthernet2/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet3/0",
+                            "target_router": "R8",
+                            "target_interface": "GigabitEthernet3/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet4/0",
+                            "target_router": "R9",
+                            "target_interface": "GigabitEthernet1/0"
+                        }
+                        ],
                         "protocols": {
                             "ospf": true,
                             "bgp":{
@@ -200,6 +402,23 @@
                             "GigabitEthernet1/0",
                             "GigabitEthernet2/0",
                             "GigabitEthernet3/0"
+                        ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R14",
+                            "target_interface": "GigabitEthernet2/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R13",
+                            "target_interface": "GigabitEthernet2/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet3/0",
+                            "target_router": "R10",
+                            "target_interface": "GigabitEthernet1/0"
+                        }
                         ],
                         "protocols": {
                             "ospf": true,
@@ -215,6 +434,23 @@
                             "GigabitEthernet2/0",
                             "GigabitEthernet3/0"
                         ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R14",
+                            "target_interface": "GigabitEthernet1/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R12",
+                            "target_interface": "GigabitEthernet2/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet3/0",
+                            "target_router": "R11",
+                            "target_interface": "GigabitEthernet1/0"
+                        }
+                        ],
                         "protocols": {
                             "ospf": true,
                             "bgp":{
@@ -227,6 +463,18 @@
                             "Loopback0",
                             "GigabitEthernet1/0",
                             "GigabitEthernet2/0"
+                        ],
+                        "links": [
+                        {
+                            "interface": "GigabitEthernet1/0",
+                            "target_router": "R13",
+                            "target_interface": "GigabitEthernet1/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet2/0",
+                            "target_router": "R12",
+                            "target_interface": "GigabitEthernet1/0"
+                        }
                         ],
                         "protocols": {
                             "ospf": true,

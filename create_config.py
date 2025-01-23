@@ -35,18 +35,73 @@ def generate_ip(interface_name, router_nbr, base_prefix):
         return f"{base_prefix}:{router_nbr}:{main_interface}:{sub_interface}::1/64"
     return None
 
-def get_interface_subnet(router_name, interface_name, base_prefix):
+def get_interface_subnet(router_name, interface_name, base_prefix, intent, as_name):
     """
-    Generate the IPv6 subnet for a given interface name and router number.
+    Generate the IPv6 subnet for a given interface considering peer relationships.
     """
+    # Locate the current router and its links
+    for as_entry in intent["network"]:
+        if as_name in as_entry:
+            all_routers = as_entry[as_name]["routers"]
+            current_router = all_routers.get(router_name)
+            if not current_router or "links" not in current_router:
+                continue
+
+            # Check for the link that matches the given interface
+            for link in current_router["links"]:
+                if link["interface"] == interface_name:
+                    # Found the peer link -> use the router and interface information to generate the subnet
+                    peer_router = link["target_router"]
+                    peer_interface = link["target_interface"]
+
+                    # Generate the subnet based on the current router and interface
+                    router_nbr = int(router_name.lstrip("R"))
+                    peer_nbr = int(peer_router.lstrip("R"))
+                    interface_parts = interface_name.split("/")
+                    main_interface = int(interface_parts[0][-1])  
+                    sub_interface = int(interface_parts[1])       
+
+                    # Subnet shared between this router and its peer
+                    return f"{base_prefix}:{min(router_nbr, peer_nbr)}:{main_interface}:{sub_interface}::/64"
+
+    # if no link is found
     router_nbr = int(router_name.lstrip("R"))
     if interface_name.startswith("GigabitEthernet"):
         interface_parts = interface_name.split("/")
-        main_interface = int(interface_parts[0][-1])  
-        sub_interface = int(interface_parts[1]) 
+        main_interface = int(interface_parts[0][-1])
+        sub_interface = int(interface_parts[1])
         return f"{base_prefix}:{router_nbr}:{main_interface}:{sub_interface}::/64"
     return None
 
+
+def generate_ip_with_peer(router_name, interface_name, as_name, intent, base_prefixes):
+    """
+    Generate an IPv6 address for an interface considering peer connections from the intent file.
+    """
+    base_prefix = base_prefixes[as_name]
+
+    # Find the router and its links in the intent file
+    for as_entry in intent["network"]:
+        if as_name in as_entry:
+            all_routers = as_entry[as_name]["routers"]
+            current_router = all_routers.get(router_name)
+            if not current_router or "links" not in current_router:
+                continue
+
+            # loop through the links to find a match for the interface
+            for link in current_router["links"]:
+                if link["interface"] == interface_name:
+                    target_router = link["target_router"]
+                    target_interface = link["target_interface"]
+
+                    # assign ::1 for this router and ::2 for the peer
+                    if router_name < target_router:
+                        return f"{base_prefix}:{router_name.lstrip('R')}:{interface_name.split('/')[-1]}::1/64"
+                    else:
+                        return f"{base_prefix}:{target_router.lstrip('R')}:{target_interface.split('/')[-1]}::2/64"
+
+    # Ddefault fallback for non-linked interfaces
+    return generate_ip(interface_name, int(router_name.lstrip("R")), base_prefix)
 
 
 def create_config(router_name, router_data, as_name, router_nbr):
@@ -90,7 +145,7 @@ def create_config(router_name, router_data, as_name, router_nbr):
     
     #defines ip addresses of current router's interfaces
     for interface_name in router_data["interfaces"]:
-        ipv6_address = generate_ip(interface_name, router_nbr, base_prefix)
+        ipv6_address = generate_ip_with_peer(router_name, interface_name, as_name, intent, base_prefixes)
         config.append(f"interface {interface_name}")
         config.append(" no ip address")
         config.append(" negotiation auto")
@@ -136,7 +191,7 @@ def create_config(router_name, router_data, as_name, router_nbr):
             target_router_as = get_as_of_router(target_router, intent)
             target_base_prefix = base_prefixes[target_router_as]
 
-            neighbor_ip = generate_ip(ebgp["interface"], target_router_number, target_base_prefix).split('/')[0]
+            neighbor_ip = generate_ip_with_peer(router_name, ebgp["interface"], as_name, intent, base_prefixes).split('/')[0]
 
             config.append(f" neighbor {neighbor_ip} remote-as {remote_as}")
             config.append(f" neighbor {neighbor_ip} description Connection to {target_router} in AS {remote_as}")
@@ -147,7 +202,7 @@ def create_config(router_name, router_data, as_name, router_nbr):
 
         for ebgp in bgp_config['ebgp']:
 
-            advertise_network = get_interface_subnet(ebgp["advertise"], ebgp["interface"], base_prefix)
+            advertise_network = get_interface_subnet(router_name, ebgp["interface"], base_prefix, intent, as_name)
             config.append(f" network {advertise_network}")
 
             target_router = ebgp["target_router"]
@@ -155,7 +210,7 @@ def create_config(router_name, router_data, as_name, router_nbr):
             target_router_as = get_as_of_router(target_router, intent)
             target_base_prefix = base_prefixes[target_router_as]
 
-            neighbor_ip = generate_ip(ebgp["interface"], target_router_number, target_base_prefix).split('/')[0]
+            neighbor_ip = generate_ip_with_peer(router_name, ebgp["interface"], as_name, intent, base_prefixes).split('/')[0]
             config.append(f" neighbor {neighbor_ip} activate")
 
     if "address-family ipv6" not in config:
