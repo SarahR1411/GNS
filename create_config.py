@@ -165,15 +165,15 @@ def create_config(router_name, router_data, as_name, router_nbr):
     for interface_name in router_data["interfaces"]:
         ipv6_address = generate_ip_with_peer(router_name, interface_name, as_name, intent, base_prefixes)
         config.append(f"interface {interface_name}")
+        config.append(" no shutdown")
         config.append(" no ip address")
-        config.append(" negotiation auto")
         config.append(" ipv6 enable")
         config.append(f" ipv6 address {ipv6_address}")
-        config.append(" no shutdown")
         if router_data["protocols"].get("ripng"):
             config.append(f" ipv6 rip {process_id} enable")
         if "ospf" in router_data["protocols"]:
             config.append(f" ipv6 ospf {process_id} area 0")
+        config.append(" negotiation auto")
         config.append("!")
     
     # If RIP enabled
