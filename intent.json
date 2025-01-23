@@ -109,7 +109,7 @@
                                 "ebgp": [
                                     {
                                         "interface": "GigabitEthernet2/0",
-                                        "target_router": "R8",
+                                        "target_router": "R9",
                                         "advertise": "R1"
                                     }
                                 ]
