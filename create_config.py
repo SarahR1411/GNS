@@ -211,7 +211,8 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker):
 
         for ebgp in bgp_config['ebgp']:
 
-            advertise_network = get_interface_subnet(router_name, ebgp["interface"], base_prefix, intent, as_name, link_tracker)
+            advertise_router = ebgp['advertise']
+            advertise_network = get_interface_subnet(advertise_router, ebgp["interface"], base_prefix, intent, as_name, link_tracker)
             config.append(f" network {advertise_network}")
 
             target_router = ebgp["target_router"]
