@@ -53,8 +53,12 @@ def generate_ip_with_peer(router_name, interface_name, as_name, intent, base_pre
                     # Use the link ID as the fourth digit
                     link_id = link_tracker[link_key]
                     if router_name < target_router:
+                        if router_name == link["target_router"]:
+                            return f"{base_prefix}:{link_id}::2/64"
                         return f"{base_prefix}:{link_id}::1/64"  # This router gets ::1
                     else:
+                        if router_name == link["target_router"]:
+                            return f"{base_prefix}:{link_id}::1/64"
                         return f"{base_prefix}:{link_id}::2/64"  # Peer router gets ::2
 
     # Fallback for standalone interfaces
@@ -196,11 +200,11 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker):
         for ebgp in bgp_config["ebgp"]:
 
             target_router = ebgp["target_router"]
-            target_router_number = int(target_router.lstrip("R"))
+            # target_router_number = int(target_router.lstrip("R"))
             target_router_as = get_as_of_router(target_router, intent)
-            target_base_prefix = base_prefixes[target_router_as]
+            # target_base_prefix = base_prefixes[target_router_as]
 
-            neighbor_ip = generate_ip_with_peer(router_name, ebgp["interface"], as_name, intent, base_prefixes, link_tracker).split('/')[0]
+            neighbor_ip = generate_ip_with_peer(target_router, ebgp["interface"], target_router_as, intent, base_prefixes, link_tracker).split('/')[0]
 
             config.append(f" neighbor {neighbor_ip} remote-as {remote_as}")
             config.append(f" neighbor {neighbor_ip} description Connection to {target_router} in AS {remote_as}")

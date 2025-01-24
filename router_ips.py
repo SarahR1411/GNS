@@ -26,6 +26,7 @@ def generate_ip(interface_name, router_nbr, base_prefix):
 
 
 
+
 def generate_ip_with_peer(router_name, interface_name, as_name, intent, base_prefixes, link_tracker):
     """
     Generate a unique IPv6 address for an interface, considering both peer links and standalone interfaces.
@@ -57,8 +58,12 @@ def generate_ip_with_peer(router_name, interface_name, as_name, intent, base_pre
                     # Use the link ID as the fourth digit
                     link_id = link_tracker[link_key]
                     if router_name < target_router:
+                        if router_name == link["target_router"]:
+                            return f"{base_prefix}:{link_id}::2/64"
                         return f"{base_prefix}:{link_id}::1/64"  # This router gets ::1
                     else:
+                        if router_name == link["target_router"]:
+                            return f"{base_prefix}:{link_id}::1/64"
                         return f"{base_prefix}:{link_id}::2/64"  # Peer router gets ::2
 
     # Fallback for standalone interfaces
