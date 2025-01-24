@@ -24,17 +24,25 @@ def generate_ip(interface_name, router_nbr, base_prefix):
         return f"{base_prefix}:{router_nbr}:{main_interface}:{sub_interface}::1/64"
     return None
 
-
+def get_as_of_router(router_name, intent):
+    """
+    Determines which AS a router belongs to based on the intent file.
+    """
+    for as_entry in intent['network']:
+        for as_name, data in as_entry.items():
+            if router_name in data["routers"]:
+                return as_name
+    raise ValueError(f"Router {router_name} not found in any AS.")
 
 
 def generate_ip_with_peer(router_name, interface_name, as_name, intent, base_prefixes, link_tracker):
     """
-    Generate a unique IPv6 address for an interface, considering both peer links and standalone interfaces.
+    Generate a unique IPv6 address for an interface considering both peer links and standalone interfaces.
     """
-    base_prefix = base_prefixes[as_name]  # Get the base prefix for the AS
-    router_nbr = int(router_name.lstrip("R"))  # Extract router number
+    initiating_as_prefix = base_prefixes[as_name]  
+    router_nbr = int(router_name.lstrip("R"))  
 
-    # Locate the current router and its links
+    # locate the current router and its links
     for as_entry in intent["network"]:
         if as_name in as_entry:
             all_routers = as_entry[as_name]["routers"]
@@ -42,40 +50,49 @@ def generate_ip_with_peer(router_name, interface_name, as_name, intent, base_pre
             if not current_router or "links" not in current_router:
                 continue
 
-            # Check if the interface is part of a peer link
+            # check if the interface is part of a peer link
             for link in current_router["links"]:
                 if link["interface"] == interface_name:
                     target_router = link["target_router"]
+                    target_router_as = get_as_of_router(target_router, intent)
                     target_router_nbr = int(target_router.lstrip("R"))
 
-                    # Create a unique key for this link
-                    link_key = tuple(sorted([router_name, target_router]))
+                    # create a unique key for this link including the initiating router's AS
+                    link_key = tuple(sorted([(router_name, as_name), (target_router, target_router_as)]))
 
-                    # Ensure each link has a unique subnet
+                    # make sure each link has a unique subnet and shared prefix
                     if link_key not in link_tracker:
-                        link_tracker[link_key] = len(link_tracker) + 1
+                        link_tracker[link_key] = {
+                            "link_id": len(link_tracker) + 1,
+                            "shared_prefix": initiating_as_prefix,
+                        }
 
-                    # Use the link ID as the fourth digit
-                    link_id = link_tracker[link_key]
+                    link_info = link_tracker[link_key]
+                    link_id = link_info["link_id"]
+                    shared_prefix = link_info["shared_prefix"]
+
+                    print(f"[DEBUG] Link: {router_name} ({interface_name}) <-> {target_router} (AS: {target_router_as}), "
+                          f"Link ID: {link_id}, Shared Prefix: {shared_prefix}")
+
+                    # Assign ::1 and ::2 based on router order
                     if router_name < target_router:
-                        if router_name == link["target_router"]:
-                            return f"{base_prefix}:{link_id}::2/64"
-                        return f"{base_prefix}:{link_id}::1/64"  # This router gets ::1
+                        return f"{shared_prefix}:{link_id}::1/64"  # This router gets ::1
                     else:
-                        if router_name == link["target_router"]:
-                            return f"{base_prefix}:{link_id}::1/64"
-                        return f"{base_prefix}:{link_id}::2/64"  # Peer router gets ::2
+                        return f"{shared_prefix}:{link_id}::2/64"  # Peer router gets ::2
 
-    # Fallback for standalone interfaces
+    # for standalone interfaces
     if interface_name.startswith("Loopback"):
-        return f"{base_prefix}::{router_nbr}/128"  # Loopbacks get unique /128 addresses
+        ipv6 = f"{initiating_as_prefix}::{router_nbr}/128"
+        print(f"[DEBUG] Loopback IP: {router_name} ({interface_name}) -> {ipv6}")
+        return ipv6
     elif interface_name.startswith("GigabitEthernet"):
-        # Use router number and interface details for standalone GigabitEthernet interfaces
         try:
             interface_parts = interface_name.split("/")
             main_interface = int(interface_parts[0][-1])  # Extract the main interface
             sub_interface = int(interface_parts[1])       # Extract the sub-interface
-            return f"{base_prefix}:{router_nbr}:{main_interface}:{sub_interface}::1/64"
+            ipv6 = f"{initiating_as_prefix}:{router_nbr}:{main_interface}:{sub_interface}::1/64"
+            print(f"[DEBUG] Standalone GigabitEthernet IP: {router_name} ({interface_name}) -> {ipv6}")
+            return ipv6
         except (IndexError, ValueError):
             raise ValueError(f"Invalid interface name format: {interface_name}")
     else:
