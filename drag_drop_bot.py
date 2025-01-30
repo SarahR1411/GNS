@@ -22,6 +22,8 @@ router_folder_corresp = {
 config_folder = "config_files"
 destination = "/home/srmili/GNS3/projects/GNS_Project1/project-files/dynamips"
 
+
+
 def delete_existing_cfg_files(dest_folder):
     """Delete all .cfg files in the destination folder."""
     if os.path.exists(dest_folder):
