@@ -478,6 +478,9 @@
                         ],
                         "protocols": {
                             "ospf": true,
+                            "cost": {
+                                "GigabitEthernet1/0": 100
+                            },
                             "bgp":{
                                 "ibgp": true
                             }

@@ -152,10 +152,16 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker):
         if router_data["protocols"].get("ripng"):
             config.append(f" ipv6 rip {process_id} enable")
         if "ospf" in router_data["protocols"]:
-            config.append(f" ipv6 ospf {process_id} area 0")
+            config.append(f" ipv6 ospf {process_id} area 0") #change area if multiple ASs
+            cost_dict = router_data["protocols"].get("cost", {})
+            cost_value = cost_dict.get(interface_name)  
+            if cost_dict != {}:
+                if cost_value is not None:  
+                    config.append(f" ipv6 ospf cost {cost_value}")
         config.append(" negotiation auto")
-        config.append("!")
-    
+        config.append("!")        
+      
+
     # If RIP enabled
     
     if router_data["protocols"].get("ripng"):
