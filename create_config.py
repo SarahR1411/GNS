@@ -218,20 +218,22 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker):
             advertise_router = ebgp['advertise']
             target_router = ebgp["target_router"]
             target_router_as = get_as_of_router(target_router, intent)
+
+            for interface in ebgp["advertise-interface"]:
             
-            advertise_network = get_interface_subnet(
-                                advertise_router,  
-                                ebgp["interface"],  
-                                base_prefixes,      
-                                intent,             
-                                as_name,           
-                                link_tracker        
-                            )
+                advertise_network = get_interface_subnet(
+                                    advertise_router,  
+                                    interface,  
+                                    base_prefixes,      
+                                    intent,             
+                                    as_name,           
+                                    link_tracker        
+                                )
+                
+                print(f"[DEBUG] Advertised Network for {router_name}: {advertise_network}")
+                config.append(f" network {advertise_network}")
             
             neighbor_ip = generate_ip_with_peer(target_router, ebgp["interface"], target_router_as, intent, base_prefixes, link_tracker).split('/')[0]
-            
-            print(f"[DEBUG] Advertised Network for {router_name}: {advertise_network}")
-            config.append(f" network {advertise_network}")
             config.append(f" neighbor {neighbor_ip} activate")
 
 

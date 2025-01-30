@@ -196,7 +196,11 @@
                                     {
                                         "interface": "GigabitEthernet2/0",
                                         "target_router": "R8",
-                                        "advertise": "R1"
+                                        "advertise": "R1",
+                                        "advertise-interface": [
+                                            "GigabitEthernet1/0",
+                                            "GigabitEthernet2/0"
+                                        ]
                                     }
                                 ]
                             }
@@ -234,7 +238,11 @@
                                     {
                                         "interface": "GigabitEthernet2/0",
                                         "target_router": "R9",
-                                        "advertise": "R1"
+                                        "advertise": "R1",
+                                        "advertise-interface": [
+                                            "GigabitEthernet1/0",
+                                            "GigabitEthernet2/0"
+                                        ]
                                     }
                                 ]
                             }
@@ -278,7 +286,10 @@
                                     { 
                                         "interface": "GigabitEthernet2/0",
                                         "target_router": "R6",
-                                        "advertise": "R14"
+                                        "advertise": "R14",
+                                        "advertise-interface": [
+                                            "GigabitEthernet2/0"
+                                        ]
                                     }
                                 ]
                             }
@@ -316,7 +327,10 @@
                                     {
                                         "interface": "GigabitEthernet2/0",
                                         "target_router": "R7",
-                                        "advertise": "R14"
+                                        "advertise": "R14",
+                                        "advertise-interface": [
+                                            "GigabitEthernet2/0"
+                                        ]
                                     }
                                 ]
                             }
