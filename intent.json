@@ -2,6 +2,7 @@
     "network": [
         {
             "AS_X": {
+                "base_prefix": "2001:100:4",
                 "routers": {
                     "R1": {
                         "interfaces": [
@@ -253,6 +254,7 @@
         },
         {
             "AS_Y":{
+                "base_prefix": "2001:200:4",
                 "routers":{
                     "R8": {
                         "interfaces": [

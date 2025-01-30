@@ -8,8 +8,13 @@ file_path = os.path.join(script_dir, "intent.json")
 with open(file_path, "r") as file:
     intent = json.load(file)
 
-def get_as_number(as_name): 
-    return 1 if as_name == "AS_X" else 2
+as_numbers = {}
+for idx, as_entry in enumerate(intent["network"]):
+    for as_name in as_entry:
+        as_numbers[as_name] = idx + 1
+
+def get_as_number(as_name):
+    return as_numbers.get(as_name, 0)
 
 def get_as_of_router(router_name, intent):
     """
@@ -91,7 +96,7 @@ def get_interface_subnet(router_name, interface_name, base_prefixes, intent, as_
     """
     Generate the IPv6 subnet for a given interface dynamically using `generate_ip_with_peer`.
     """
-    # Use `generate_ip_with_peer` to get the full address
+
     full_address = generate_ip_with_peer(router_name, interface_name, as_name, intent, base_prefixes, link_tracker)
 
     # Extract the subnet part (everything up to "::") and append the /64 subnet mask
@@ -102,7 +107,7 @@ def get_interface_subnet(router_name, interface_name, base_prefixes, intent, as_
 
 
 
-def create_config(router_name, router_data, as_name, router_nbr, link_tracker):
+def create_config(router_name, router_data, as_name, router_nbr, link_tracker, base_prefixes):
 
     """
     Generates the startup configuration for a given router based on the provided intent file.
@@ -112,15 +117,10 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker):
 
     config = []
     ibgp_list = []
+    bgp_config = router_data['protocols'].get("bgp", {})
     current_as = get_as_number(as_name)
-    remote_as  = 2 if current_as == 1 else 1
     router_id = f"{router_nbr}.{router_nbr}.{router_nbr}.{router_nbr}"
     process_id = router_nbr
-    base_prefixes = {
-    "AS_X": "2001:100:4",
-    "AS_Y": "2001:200:4"
-    }
-    base_prefix = base_prefixes[as_name]
 
     all_routers = None
     for as_entry in intent['network']:
@@ -130,16 +130,9 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker):
     if not all_routers:
         raise KeyError(f"AS '{as_name}' not found in intent['network']")
 
-    
-
     config.append(f"!\nhostname {router_name}")
-    config.append("!")
-    config.append("no ip domain lookup")
-    config.append("ipv6 unicast-routing")
-    config.append("ipv6 cef")
-    config.append("!")
-
-
+    config.append("!\nno ip domain lookup\nipv6 unicast-routing\nipv6 cef\n!")
+    
     
     #defines ip addresses of current router's interfaces
     for interface_name in router_data["interfaces"]:
@@ -170,8 +163,6 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker):
         config.append("!")
     
     # For BGP config
-    
-    bgp_config = router_data['protocols'].get("bgp", {})
 
     if bgp_config.get("ibgp"):
         config.append(f"router bgp {current_as}")
@@ -189,8 +180,10 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker):
 
     if "ebgp" in bgp_config:
         for ebgp in bgp_config["ebgp"]:
+            
             target_router = ebgp["target_router"]
             target_router_as = get_as_of_router(target_router, intent)
+            remote_as = get_as_number(target_router_as)
             
             # Generate the neighbor IP
             neighbor_ip = generate_ip_with_peer(
@@ -245,7 +238,7 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker):
     config.append("exit-address-family")
     config.append("!")
     
-    if as_name == "AS_Y":
+    if "ospf" in router_data["protocols"]:
         config.append(f"ipv6 router ospf {process_id}")
         config.append(f" router-id {router_id}\n!")
     
@@ -254,12 +247,17 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker):
 
 def main():
     link_tracker = {}
+    base_prefixes = {}
+    for as_entry in intent["network"]:
+        for as_name, as_data in as_entry.items():
+            base_prefixes[as_name] = as_data.get("base_prefix")
+
     os.makedirs("config_files", exist_ok=True)
     i = 1
     for as_data in intent['network']:
         for as_name, content in as_data.items():
             for router_name, router_data in content["routers"].items():
-                config = create_config(router_name, router_data, as_name, i, link_tracker)
+                config = create_config(router_name, router_data, as_name, i, link_tracker, base_prefixes)
                 output = os.path.join("config_files", f"{router_name}_startup-config.cfg")
                 with open(output, "w") as config_file:
                     config_file.write(config)
