@@ -279,7 +279,12 @@
                         }
                         ],
                         "protocols": {
-                            "ospf": true,
+                            "ospf": {
+                                "enabled": true,
+                                "passive_interfaces": [
+                                    "GigabitEthernet2/0"
+                                ]
+                            },
                             "bgp":{
                                 "ibgp": true,
                                 "ebgp": [
@@ -320,7 +325,12 @@
                         }
                         ],
                         "protocols": {
-                            "ospf": true,
+                            "ospf": {
+                                "enabled": true,
+                                "passive_interfaces": [
+                                    "GigabitEthernet2/0"
+                                ]
+                            },
                             "bgp": {
                                 "ibgp": true,
                                 "ebgp": [

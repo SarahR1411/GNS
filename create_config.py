@@ -169,9 +169,21 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker):
         config.append(" redistribute connected")
         config.append("!")
     
-    # For BGP config
+    
     
     bgp_config = router_data['protocols'].get("bgp", {})
+
+    if "ospf" in router_data['protocols'] and "ebgp" in bgp_config:
+        config.append(f"router ospfv3 {process_id}")
+        config.append("!")
+        config.append("address-family ipv6 unicast")
+        for interface in router_data["protocols"]["ospf"]["passive_interfaces"]:
+            config.append(f" passive-interface {interface}")
+            config.append(f" router-id {router_id}")
+        config.append("exit-address-family\n!")
+
+
+    # For BGP config
 
     if bgp_config.get("ibgp"):
         config.append(f"router bgp {current_as}")
