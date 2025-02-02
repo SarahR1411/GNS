@@ -306,7 +306,7 @@
                                         ]
                                     },
                                     {
-                                        "interface": "GigabitEthernet4/0",
+                                        "interface": "GigabitEthernet2/0",
                                         "target_router": "R15",
                                         "advertise": "R8",
                                         "advertise-interface": ["GigabitEthernet4/0"]
@@ -365,7 +365,7 @@
                                         ]
                                     },
                                     {
-                                        "interface": "GigabitEthernet4/0",
+                                        "interface": "GigabitEthernet2/0",
                                         "target_router": "R18",
                                         "advertise": "R9",
                                         "advertise-interface": ["GigabitEthernet4/0"]
@@ -574,7 +574,7 @@
                                 "ibgp": true,
                                 "ebgp": [
                                   {
-                                    "interface": "GigabitEthernet2/0",
+                                    "interface": "GigabitEthernet4/0",
                                     "target_router": "R8",
                                     "advertise": "R17",
                                     "advertise-interface": ["GigabitEthernet1/0"]
@@ -656,7 +656,7 @@
                                 "ibgp": true,
                                 "ebgp": [
                                   {
-                                    "interface": "GigabitEthernet2/0",
+                                    "interface": "GigabitEthernet4/0",
                                     "target_router": "R9",
                                     "advertise": "R19",
                                     "advertise-interface": ["GigabitEthernet1/0"]
