@@ -1,7 +1,7 @@
 import os
 import shutil
 
-
+# Dictionary mapping router number to its folder ID and router name
 router_folder_corresp = {
     5 : ("0cdfc724-c2af-4ebf-8da6-a9f2adb35c51", "i3"),
     14 : ("2afa751b-268b-4974-ba16-2bec9036dfef", "i7"),
@@ -19,51 +19,66 @@ router_folder_corresp = {
     12 : ("fce06220-5b24-4eab-89c2-acdf0a798679", "i14")
 }
 
+# Folder where the router configuration files are stored
 config_folder = "config_files"
+# Destination folder where GNS3 expects the configuration files to be moved
 destination = "/home/srmili/GNS3/projects/GNS_Project1/project-files/dynamips"
 
 
-
 def delete_existing_cfg_files(dest_folder):
-    """Delete all .cfg files in the destination folder."""
+    """
+    Deletes all .cfg files from the destination folder (if they exist).
+    This is to avoid conflicts with existing configurations before moving the new ones.
+    """
     if os.path.exists(dest_folder):
         for file in os.listdir(dest_folder):
-            if file.endswith(".cfg"):
+            if file.endswith(".cfg"):   # Filter to only .cfg files
                 file_path = os.path.join(dest_folder, file)
-                os.remove(file_path)
+                os.remove(file_path)    # Remove the file
                 print(f"Deleted existing .cfg file: {file_path}")
 
+
 def delete_nvram_file(router_folder):
-    """Delete the NVRAM file in the router folder (not in the configs subfolder)."""
+    """
+    Deletes any NVRAM files in the router folder.
+    NVRAM files can be problematic in certain scenarios, so they are removed before adding new configurations.
+    """
     if os.path.exists(router_folder):
         for file in os.listdir(router_folder):
-            if "nvram" in file:  # find any file containing 'nvram' in its name
+            if "nvram" in file:  # Search for files containing 'nvram' in their name
                 file_path = os.path.join(router_folder, file)
-                os.remove(file_path)
+                os.remove(file_path)    # Remove the file
                 print(f"Deleted NVRAM file: {file_path}")
 
-def move_configs():
-    for router_number, (folder_id, router_name) in router_folder_corresp.items():
-        router_folder = os.path.join(destination, folder_id)  # Router's main folder
-        dest_folder = os.path.join(router_folder, "configs")  # 'configs' subfolder
-        src_file = os.path.join(config_folder, f"R{router_number}_startup-config.cfg")
-        dest_file = os.path.join(dest_folder, f"{router_name}_startup-config.cfg") #the config file must contain the node's local id or else GNS won't recognize it
 
-        # Delete NVRAM file in the router's main folder
+def move_configs():
+    """
+    This function moves configuration files from the source folder to the appropriate destination folder
+    based on the router folder and router number mapping provided in 'router_folder_corresp'.
+    It also handles the deletion of existing configuration and NVRAM files as needed.
+    """
+    # Iterate over each router in the mapping dictionary
+    for router_number, (folder_id, router_name) in router_folder_corresp.items():
+        router_folder = os.path.join(destination, folder_id)  # Router's main folder path
+        dest_folder = os.path.join(router_folder, "configs")  # Path to the 'configs' subfolder
+        src_file = os.path.join(config_folder, f"R{router_number}_startup-config.cfg")  # Source config file
+        dest_file = os.path.join(dest_folder, f"{router_name}_startup-config.cfg") # Destination config file with router's local ID
+
+        # Delete NVRAM file in the router's main folder before moving the new config file
         delete_nvram_file(router_folder)
 
-        # Delete existing .cfg files in the 'configs' subfolder
+        # Delete any existing .cfg files in the destination config folder to avoid conflicts
         if os.path.exists(dest_folder):
             delete_existing_cfg_files(dest_folder)
 
-        # Move the new config file
+        # Move the new configuration file from the source to the destination folder
         if os.path.exists(src_file):
             if not os.path.exists(dest_folder):
-                os.makedirs(dest_folder)
-            shutil.move(src_file, dest_file)
+                os.makedirs(dest_folder)    # Create the destination folder if it doesn't exist
+            shutil.move(src_file, dest_file)    # Move the config file to the destination
             print(f"Moved {src_file} to {dest_file}")
         else:
             print(f"Source file not found: {src_file}")
 
 if __name__ == "__main__":
-    move_configs()
+    move_configs()  # Call the function to start moving the config files
