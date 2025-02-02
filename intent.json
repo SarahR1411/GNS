@@ -368,7 +368,7 @@
                                         "interface": "GigabitEthernet2/0",
                                         "target_router": "R18",
                                         "advertise": "R14",
-                                        "advertise-interface": ["GigabitEthernet1/0"]
+                                        "advertise-interface": ["GigabitEthernet2/0"]
                                     }
                                 ]
                             }
