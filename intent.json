@@ -261,7 +261,8 @@
                             "Loopback0",
                             "GigabitEthernet1/0",
                             "GigabitEthernet2/0",
-                            "GigabitEthernet3/0"
+                            "GigabitEthernet3/0",
+                            "GigabitEthernet4/0"
                         ],
                         "links": [
                         {
@@ -278,13 +279,19 @@
                             "interface": "GigabitEthernet3/0",
                             "target_router": "R11",
                             "target_interface": "GigabitEthernet3/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet4/0",
+                            "target_router": "R15",  
+                            "target_interface": "GigabitEthernet2/0"
                         }
                         ],
                         "protocols": {
                             "ospf": {
                                 "enabled": true,
                                 "passive_interfaces": [
-                                    "GigabitEthernet2/0"
+                                    "GigabitEthernet2/0",
+                                    "GigabitEthernet4/0"
                                 ]
                             },
                             "bgp":{
@@ -297,6 +304,12 @@
                                         "advertise-interface": [
                                             "GigabitEthernet2/0"
                                         ]
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet4/0",
+                                        "target_router": "R15",
+                                        "advertise": "R8",
+                                        "advertise-interface": ["GigabitEthernet4/0"]
                                     }
                                 ]
                             }
@@ -307,7 +320,8 @@
                             "Loopback0",
                             "GigabitEthernet1/0",
                             "GigabitEthernet2/0",
-                            "GigabitEthernet3/0"
+                            "GigabitEthernet3/0",
+                            "GigabitEthernet4/0"
                         ],
                         "links": [
                         {
@@ -324,13 +338,19 @@
                             "interface": "GigabitEthernet3/0",
                             "target_router": "R10",
                             "target_interface": "GigabitEthernet3/0"
+                        },
+                        {
+                            "interface": "GigabitEthernet4/0",
+                            "target_router": "R18",
+                            "target_interface": "GigabitEthernet2/0"
                         }
                         ],
                         "protocols": {
                             "ospf": {
                                 "enabled": true,
                                 "passive_interfaces": [
-                                    "GigabitEthernet2/0"
+                                    "GigabitEthernet2/0",
+                                    "GigabitEthernet4/0"
                                 ]
                             },
                             "bgp": {
@@ -343,6 +363,12 @@
                                         "advertise-interface": [
                                             "GigabitEthernet2/0"
                                         ]
+                                    },
+                                    {
+                                        "interface": "GigabitEthernet4/0",
+                                        "target_router": "R18",
+                                        "advertise": "R9",
+                                        "advertise-interface": ["GigabitEthernet4/0"]
                                     }
                                 ]
                             }
@@ -510,6 +536,147 @@
                             "bgp":{
                                 "ibgp": true
                             }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "AS_Z": {
+                "base_prefix": "2001:300:4",
+                "routers": {
+                    "R15": {
+                        "interfaces": [
+                            "Loopback0", 
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0"
+                        ],
+                        "links": [
+                            {
+                                "interface": "GigabitEthernet1/0",
+                                "target_router": "R16",
+                                "target_interface": "GigabitEthernet1/0"
+                            },
+                            {
+                                "interface": "GigabitEthernet2/0",
+                                "target_router": "R8", 
+                                "target_interface": "GigabitEthernet4/0"
+                            }
+                        ],
+                        "protocols": {
+                            "ospf": {
+                                "enabled": true,
+                                "passive_interfaces": [
+                                    "GigabitEthernet2/0"
+                                ]
+                            },
+                            "bgp": { 
+                                "ibgp": true,
+                                "ebgp": [
+                                  {
+                                    "interface": "GigabitEthernet2/0",
+                                    "target_router": "R8",
+                                    "advertise": "R17",
+                                    "advertise-interface": ["GigabitEthernet1/0"]
+                                  }
+                                ]
+                            }
+                        }
+                    },
+                    "R16": {
+                        "interfaces": [
+                            "Loopback0", 
+                            "GigabitEthernet1/0", 
+                            "GigabitEthernet2/0"
+                        ],
+                        "links": [
+                            {
+                                "interface": "GigabitEthernet1/0",
+                                "target_router": "R15",
+                                "target_interface": "GigabitEthernet1/0"
+                            },
+                            {
+                                "interface": "GigabitEthernet2/0",
+                                "target_router": "R17",
+                                "target_interface": "GigabitEthernet1/0"
+                            }
+                        ],
+                        "protocols": {
+                            "ospf": true,
+                            "bgp": { 
+                                "ibgp": true
+                            }
+                        }
+                    },
+                    "R17": {
+                        "interfaces": [
+                            "Loopback0", 
+                            "GigabitEthernet1/0"
+                        ],
+                        "links": [
+                            {
+                                "interface": "GigabitEthernet1/0",
+                                "target_router": "R16",
+                                "target_interface": "GigabitEthernet2/0"
+                            }
+                        ],
+                        "protocols": {
+                            "ospf": true,
+                            "bgp": { "ibgp": true }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "AS_U": {
+                "base_prefix": "2001:400:4",
+                "routers": {
+                    "R18": {
+                        "interfaces": [
+                            "Loopback0",
+                            "GigabitEthernet1/0",
+                            "GigabitEthernet2/0"
+                        ],
+                        "links": [
+                            {
+                                "interface": "GigabitEthernet1/0",
+                                "target_router": "R19",
+                                "target_interface": "GigabitEthernet1/0"
+                            },
+                            {
+                              "interface": "GigabitEthernet2/0",
+                              "target_router": "R9",
+                              "target_interface": "GigabitEthernet4/0"
+                            }
+                        ],
+                        "protocols": {
+                            "ripng": true,
+                            "bgp": { 
+                                "ibgp": true,
+                                "ebgp": [
+                                  {
+                                    "interface": "GigabitEthernet2/0",
+                                    "target_router": "R9",
+                                    "advertise": "R19",
+                                    "advertise-interface": ["GigabitEthernet1/0"]
+                                  }
+                                ]
+                            }
+                        }
+                    },
+                    "R19": {
+                        "interfaces": ["Loopback0", "GigabitEthernet1/0"],
+                        "links": [
+                            {
+                                "interface": "GigabitEthernet1/0",
+                                "target_router": "R18",
+                                "target_interface": "GigabitEthernet1/0"
+                            }
+                        ],
+                        "protocols": {
+                            "ripng": true,
+                            "bgp": { "ibgp": true }
                         }
                     }
                 }
