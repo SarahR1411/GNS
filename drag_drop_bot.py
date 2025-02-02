@@ -16,7 +16,13 @@ router_folder_corresp = {
     11 : ("d0347ac7-f0a2-469f-a8b9-604555db3a0c", "i6"),
     6 : ("dfb89e34-7823-4447-ade3-aa26347b1ea1", "i11"),
     2 : ("e30e197d-464f-4764-b50c-9c46200cf67a", "i9"),
-    12 : ("fce06220-5b24-4eab-89c2-acdf0a798679", "i14")
+    12 : ("fce06220-5b24-4eab-89c2-acdf0a798679", "i14"),
+    16 : ("c3ca05ee-217b-4776-9cd3-a8c19fb8acfd", "i16"),
+    17 : ("68a7ff1f-8411-4f35-8a60-db15faaca488", "i17"),
+    18 : ("99e969ab-ceb4-4038-981f-f8a128b89b84", "i18"),
+    19 : ("431f69fa-6ba4-47e5-895e-ba19def72105", "i19"),
+    15 : ("a93e3c2b-d846-4bc6-8203-3adac65926be", "i15")
+
 }
 
 # Folder where the router configuration files are stored
