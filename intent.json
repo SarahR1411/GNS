@@ -308,8 +308,8 @@
                                     {
                                         "interface": "GigabitEthernet2/0",
                                         "target_router": "R15",
-                                        "advertise": "R8",
-                                        "advertise-interface": ["GigabitEthernet4/0"]
+                                        "advertise": "R14",
+                                        "advertise-interface": ["GigabitEthernet2/0"]
                                     }
                                 ]
                             }
@@ -367,8 +367,8 @@
                                     {
                                         "interface": "GigabitEthernet2/0",
                                         "target_router": "R18",
-                                        "advertise": "R9",
-                                        "advertise-interface": ["GigabitEthernet4/0"]
+                                        "advertise": "R14",
+                                        "advertise-interface": ["GigabitEthernet1/0"]
                                     }
                                 ]
                             }
