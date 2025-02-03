@@ -156,7 +156,7 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker, b
         if router_data["protocols"].get("ripng"):
             config.append(f" ipv6 rip {process_id} enable")
         if "ospf" in router_data["protocols"]:
-            config.append(f" ipv6 ospf {process_id} area 0") #change area if multiple ASs
+            config.append(f" ipv6 ospf {process_id} area 0")
             cost_dict = router_data["protocols"].get("cost", {})
             cost_value = cost_dict.get(interface_name)  
             if cost_dict != {}:
@@ -230,10 +230,14 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker, b
 
         config.append("address-family ipv6")
 
+        policies = bgp_config.get('policies', {})
+        neighbor_policies = policies.get("neighbor_policies", [])
+
         for ebgp in bgp_config['ebgp']:
             advertise_router = ebgp['advertise']
             target_router = ebgp["target_router"]
             target_router_as = get_as_of_router(target_router, intent)
+            remote_as = get_as_number(target_router_as)
 
             for interface in ebgp["advertise-interface"]:
             
@@ -251,15 +255,59 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker, b
             
             neighbor_ip = generate_ip_with_peer(target_router, ebgp["interface"], target_router_as, intent, base_prefixes, link_tracker).split('/')[0]
             config.append(f" neighbor {neighbor_ip} activate")
+            
+            for np in neighbor_policies:
+                if np["neighbor_as"] == remote_as:
+                    config.append(f" neighbor {neighbor_ip} send-community both")
+
+                    for apply_item in np["apply"]:
+                        direction = apply_item["direction"]
+                        rmap_name = apply_item["route_map"]
+                        config.append(f" neighbor {neighbor_ip} route-map {rmap_name} {direction}")
+            
 
 
     if "address-family ipv6" not in config:
         config.append("!\naddress-family ipv6")
+
     for ip in ibgp_list:
         config.append(f" neighbor {ip} activate")
         
     config.append("exit-address-family")
     config.append("!")
+
+    if "policies" in bgp_config:
+        pol = bgp_config["policies"]
+        
+        # Community Lists
+        for cl in pol.get("community_lists", []):
+            name = cl["name"]
+            action = cl["action"]
+            value = cl["value"]
+            config.append(f"ip community-list standard {name} {action} {value}")
+        
+        config.append('!')
+
+        # Route Maps
+        for rm in pol.get("route_maps", []):
+            rm_name = rm["name"]
+            seq = rm.get("sequence", 10)
+            action = rm.get("action", "permit")
+            config.append(f"route-map {rm_name} {action} {seq}")
+
+            match_dict = rm.get("match", {})
+            if "community" in match_dict:
+                community_name = match_dict["community"]
+                config.append(f" match community {community_name}")
+
+            set_dict = rm.get("set", {})
+            if "local_preference" in set_dict:
+                lp = set_dict["local_preference"]
+                config.append(f" set local-preference {lp}")
+
+            config.append("!")
+
+
     
     if "ospf" in router_data["protocols"]:
         config.append(f"ipv6 router ospf {process_id}")

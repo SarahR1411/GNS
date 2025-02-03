@@ -311,7 +311,70 @@
                                         "advertise": "R14",
                                         "advertise-interface": ["GigabitEthernet2/0"]
                                     }
-                                ]
+                                ],
+                                "policies":{
+                                    "community_lists": [
+                                        {
+                                          "name": "COMMUNITY2",
+                                          "action": "permit",
+                                          "value": "131094"
+                                        }
+                                      ],
+                                      "route_maps": [
+                                        {
+                                          "name": "AS1_IN",
+                                          "direction": "in",
+                                          "sequence": 10,
+                                          "action": "permit",
+                                          "set": {
+                                            "local_preference": 50
+                                          }
+                                        },
+                                        {
+                                          "name": "AS1_OUT",
+                                          "direction": "out",
+                                          "sequence": 20,
+                                          "action": "permit",
+                                          "match": {
+                                            "community": "COMMUNITY2"
+                                          }
+                                        },
+                                        {
+                                          "name": "AS3_IN",
+                                          "direction": "in",
+                                          "sequence": 30,
+                                          "action": "permit",
+                                          "set": {
+                                            "local_preference": 100
+                                          }
+                                        },
+                                        {
+                                          "name": "AS3_OUT",
+                                          "direction": "out",
+                                          "sequence": 40,
+                                          "action": "permit",
+                                          "match": {
+                                            "community": "COMMUNITY2"
+                                          }
+                                        }
+                                      ],
+                                      "neighbor_policies": [
+                                        {
+                                          "neighbor_as": 1,
+                                          "apply": [
+                                            { "direction": "in",  "route_map": "AS1_IN" },
+                                            { "direction": "out", "route_map": "AS1_OUT" }
+                                          ]
+                                        },
+                                        {
+                                          "neighbor_as": 3,
+                                          "apply": [
+                                            { "direction": "in",  "route_map": "AS3_IN" },
+                                            { "direction": "out", "route_map": "AS3_OUT" }
+                                          ]
+                                        }
+                                      ]
+                                }
                             }
                         }
                     },
@@ -370,7 +433,70 @@
                                         "advertise": "R14",
                                         "advertise-interface": ["GigabitEthernet2/0"]
                                     }
-                                ]
+                                ],
+                                "policies":{
+                                    "community_lists": [
+                                        {
+                                        "name": "COMMUNITY2",
+                                        "action": "permit",
+                                        "value": "131094"
+                                        }
+                                    ],
+                                    "route_maps": [
+                                        {
+                                        "name": "AS1_IN",
+                                        "direction": "in",
+                                        "sequence": 10,
+                                        "action": "permit",
+                                        "set": {
+                                            "local_preference": 50
+                                        }
+                                        },
+                                        {
+                                            "name": "AS1_OUT",
+                                            "direction": "out",
+                                            "sequence": 30,
+                                            "action": "permit",
+                                            "match": {
+                                              "community": "COMMUNITY2"
+                                            }
+                                        },
+                                        {
+                                        "name": "AS4_IN",
+                                        "direction": "in",
+                                        "sequence": 20,
+                                        "action": "permit",
+                                        "set": {
+                                            "local_preference": 200
+                                        }
+                                        },
+                                        {
+                                        "name": "AS4_OUT",
+                                        "direction": "out",
+                                        "sequence": 40,
+                                        "action": "permit",
+                                        "match": {
+                                            "community": "COMMUNITY2"
+                                        }
+                                        }
+                                    ],
+                                    "neighbor_policies": [
+                                        {
+                                        "neighbor_as": 1,
+                                        "apply": [
+                                            { "direction": "in", "route_map": "AS1_IN" },
+                                            { "direction": "out", "route_map": "AS1_OUT" }
+                                        ]
+                                        },
+                                        {
+                                        "neighbor_as": 4,
+                                        "apply": [
+                                            { "direction": "in",  "route_map": "AS4_IN" },
+                                            { "direction": "out", "route_map": "AS4_OUT" }
+                                        ]
+                                        }
+                                    ]
+                                }
                             }
                         }
                     },
