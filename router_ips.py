@@ -35,7 +35,12 @@ def load_config_files(directory):
 
 def load_as_mapping():
     """Load AS-to-router mapping from intent.json"""
-    with open("intent.json", "r") as f:
+    import os
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    intent_path = os.path.join(script_dir, "intent.json")
+
+    with open(intent_path, "r") as f:
         intent = json.load(f)
     
     as_mapping = {}
