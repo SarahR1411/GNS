@@ -320,11 +320,27 @@
                                           "value": "131094"
                                         }
                                       ],
+                                      "prefix_lists": [
+                                            {
+                                            "name": "MY_NETWORK",
+                                            "sequence": 5,
+                                            "action": "permit"
+                                            }
+                                        ],
                                       "route_maps": [
+                                        {
+                                            "name": "AS1_OUT",
+                                            "direction": "out",
+                                            "sequence": 10,
+                                            "action": "permit",
+                                            "match": {
+                                              "prefix_list": "MY_NETWORK"
+                                            }
+                                        },
                                         {
                                           "name": "AS1_IN",
                                           "direction": "in",
-                                          "sequence": 10,
+                                          "sequence": 20,
                                           "action": "permit",
                                           "set": {
                                             "local_preference": 50
@@ -333,7 +349,7 @@
                                         {
                                           "name": "AS1_OUT",
                                           "direction": "out",
-                                          "sequence": 20,
+                                          "sequence": 30,
                                           "action": "permit",
                                           "match": {
                                             "community": "COMMUNITY2"
@@ -342,7 +358,7 @@
                                         {
                                           "name": "AS3_IN",
                                           "direction": "in",
-                                          "sequence": 30,
+                                          "sequence": 40,
                                           "action": "permit",
                                           "set": {
                                             "local_preference": 100
@@ -351,26 +367,33 @@
                                         {
                                           "name": "AS3_OUT",
                                           "direction": "out",
-                                          "sequence": 40,
+                                          "sequence": 60,
                                           "action": "permit",
                                           "match": {
                                             "community": "COMMUNITY2"
                                           }
+                                        },
+                                        {
+                                            "name": "AS3_OUT",
+                                            "direction": "out",
+                                            "sequence": 50,
+                                            "action": "permit",
+                                            "match": {
+                                              "prefix_list": "MY_NETWORK"
+                                            }
                                         }
                                       ],
                                       "neighbor_policies": [
                                         {
                                           "neighbor_as": 1,
                                           "apply": [
-                                            { "direction": "in",  "route_map": "AS1_IN" },
-                                            { "direction": "out", "route_map": "AS1_OUT" }
+                                            { "direction": "in",  "route_map": "AS1_IN" }
                                           ]
                                         },
                                         {
                                           "neighbor_as": 3,
                                           "apply": [
-                                            { "direction": "in",  "route_map": "AS3_IN" },
-                                            { "direction": "out", "route_map": "AS3_OUT" }
+                                            { "direction": "in",  "route_map": "AS3_IN" }
                                           ]
                                         }
                                       ]
@@ -442,6 +465,13 @@
                                         "value": "131094"
                                         }
                                     ],
+                                    "prefix_lists": [
+                                            {
+                                            "name": "MY_NETWORK",
+                                            "sequence": 5,
+                                            "action": "permit"
+                                            }
+                                        ],
                                     "route_maps": [
                                         {
                                         "name": "AS1_IN",
@@ -455,6 +485,15 @@
                                         {
                                             "name": "AS1_OUT",
                                             "direction": "out",
+                                            "sequence": 20,
+                                            "action": "permit",
+                                            "match": {
+                                              "prefix_list": "MY_NETWORK"
+                                            }
+                                        },
+                                        {
+                                            "name": "AS1_OUT",
+                                            "direction": "out",
                                             "sequence": 30,
                                             "action": "permit",
                                             "match": {
@@ -464,16 +503,25 @@
                                         {
                                         "name": "AS4_IN",
                                         "direction": "in",
-                                        "sequence": 20,
+                                        "sequence": 40,
                                         "action": "permit",
                                         "set": {
                                             "local_preference": 200
                                         }
                                         },
                                         {
+                                            "name": "AS4_OUT",
+                                            "direction": "out",
+                                            "sequence": 50,
+                                            "action": "permit",
+                                            "match": {
+                                              "prefix_list": "MY_NETWORK"
+                                            }
+                                        },
+                                        {
                                         "name": "AS4_OUT",
                                         "direction": "out",
-                                        "sequence": 40,
+                                        "sequence": 60,
                                         "action": "permit",
                                         "match": {
                                             "community": "COMMUNITY2"
@@ -484,15 +532,13 @@
                                         {
                                         "neighbor_as": 1,
                                         "apply": [
-                                            { "direction": "in", "route_map": "AS1_IN" },
-                                            { "direction": "out", "route_map": "AS1_OUT" }
+                                            { "direction": "in", "route_map": "AS1_IN" }
                                         ]
                                         },
                                         {
                                         "neighbor_as": 4,
                                         "apply": [
-                                            { "direction": "in",  "route_map": "AS4_IN" },
-                                            { "direction": "out", "route_map": "AS4_OUT" }
+                                            { "direction": "in",  "route_map": "AS4_IN" }
                                         ]
                                         }
                                     ]

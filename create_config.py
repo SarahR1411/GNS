@@ -261,9 +261,8 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker, b
                     config.append(f" neighbor {neighbor_ip} send-community both")
 
                     for apply_item in np["apply"]:
-                        direction = apply_item["direction"]
                         rmap_name = apply_item["route_map"]
-                        config.append(f" neighbor {neighbor_ip} route-map {rmap_name} {direction}")
+                        config.append(f" neighbor {neighbor_ip} route-map {rmap_name} in")
             
 
 
@@ -288,6 +287,29 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker, b
         
         config.append('!')
 
+        for pref in pol.get("prefix_lists", []):
+            name = pref['name']
+            seq = pref["sequence"]
+            action = pref['action']
+            for ebgp in bgp_config['ebgp']:
+                advertise_router = ebgp['advertise']
+                target_router = ebgp["target_router"]
+                target_router_as = get_as_of_router(target_router, intent)
+                remote_as = get_as_number(target_router_as)
+
+                for interface in ebgp["advertise-interface"]:
+                
+                    advertise_network = get_interface_subnet(
+                                        advertise_router,  
+                                        interface,  
+                                        base_prefixes,      
+                                        intent,             
+                                        as_name,           
+                                        link_tracker        
+                                    )
+                config.append(f"ipv6 prefix-list {name} seq {seq} {action} {advertise_network}")
+
+        config.append('!')
         # Route Maps
         for rm in pol.get("route_maps", []):
             rm_name = rm["name"]
@@ -299,6 +321,10 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker, b
             if "community" in match_dict:
                 community_name = match_dict["community"]
                 config.append(f" match community {community_name}")
+            
+            if "prefix_list" in match_dict:
+                pref_name = match_dict["prefix_list"]
+                config.append(f" match ipv6 address prefix-list {pref_name}")
 
             set_dict = rm.get("set", {})
             if "local_preference" in set_dict:
