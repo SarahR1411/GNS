@@ -131,6 +131,7 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker, b
     current_as = get_as_number(as_name)
     router_id = f"{router_nbr}.{router_nbr}.{router_nbr}.{router_nbr}"
     process_id = router_nbr
+    advertised = []
 
     # Find all routers in the current AS
     all_routers = None
@@ -180,7 +181,7 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker, b
         config.append("address-family ipv6 unicast")
         for interface in router_data["protocols"]["ospf"]["passive_interfaces"]:
             config.append(f" passive-interface {interface}")
-            config.append(f" router-id {router_id}")
+        config.append(f" router-id {router_id}")
         config.append("exit-address-family\n!")
 
 
@@ -250,8 +251,10 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker, b
                                     link_tracker        
                                 )
                 
-                print(f"[DEBUG] Advertised Network for {router_name}: {advertise_network}")
-                config.append(f" network {advertise_network}")
+                if advertise_network not in advertised:
+                    print(f"[DEBUG] Advertised Network for {router_name}: {advertise_network}")
+                    config.append(f" network {advertise_network}")
+                    advertised.append(advertise_network)
             
             neighbor_ip = generate_ip_with_peer(target_router, ebgp["interface"], target_router_as, intent, base_prefixes, link_tracker).split('/')[0]
             config.append(f" neighbor {neighbor_ip} activate")
@@ -277,7 +280,7 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker, b
 
     if "policies" in bgp_config:
         pol = bgp_config["policies"]
-        
+        add_to_pref = []
         # Community Lists
         for cl in pol.get("community_lists", []):
             name = cl["name"]
@@ -307,7 +310,9 @@ def create_config(router_name, router_data, as_name, router_nbr, link_tracker, b
                                         as_name,           
                                         link_tracker        
                                     )
-                config.append(f"ipv6 prefix-list {name} seq {seq} {action} {advertise_network}")
+                if advertise_network not in add_to_pref:
+                    config.append(f"ipv6 prefix-list {name} seq {seq} {action} {advertise_network}")
+                    add_to_pref.append(advertise_network)
 
         config.append('!')
         # Route Maps
